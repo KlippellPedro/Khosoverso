@@ -1,0 +1,32 @@
+{
+  "versao": "1.0",
+  "pokemons": [
+    {
+      "numero": 1,
+      "nome": "Charizard X",
+      "imagem": "charizard-x.png",
+      "elementos": ["fogo", "escuridao"],
+      "raridade": "lendario",
+      "descricao": "EXEMPLO — substitua pelos Pokémon do mestre. Um dragão envolto em chamas negras.",
+      "stats": { "vida": 78, "ataque": 130, "defesa": 111, "velocidade": 100 }
+    },
+    {
+      "numero": 2,
+      "nome": "Rayquaza Mega",
+      "imagem": "Rayquaza-mega.webp",
+      "elementos": ["ar", "raio"],
+      "raridade": "lendario",
+      "descricao": "EXEMPLO — substitua pelos Pokémon do mestre. Serpente dos céus que comanda as tempestades.",
+      "stats": { "vida": 105, "ataque": 180, "defesa": 100, "velocidade": 115 }
+    },
+    {
+      "numero": 3,
+      "nome": "Exemplo Comum",
+      "imagem": "",
+      "elementos": ["agua"],
+      "raridade": "comum",
+      "descricao": "EXEMPLO de um Pokémon comum, ainda sem imagem. Use este formato para os mons do mestre.",
+      "stats": { "vida": 45, "ataque": 49, "defesa": 49, "velocidade": 45 }
+    }
+  ]
+}

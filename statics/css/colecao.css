@@ -1,0 +1,365 @@
+/* ===== GRID DA COLEÇÃO ===== */
+.colecao-grid {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  padding: 0 12px 60px;
+}
+
+/* ===== CARD TCG — REDESIGN ===== */
+.colecao-grid .pokemon-card {
+  width: 175px !important;
+  height: 255px !important;
+  border-radius: 14px !important;
+  overflow: hidden;
+  display: flex !important;
+  flex-direction: column !important;
+  background: linear-gradient(180deg, #131325 0%, #0d0d1a 100%) !important;
+  border: 3px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+  position: relative;
+  cursor: default;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s !important;
+  animation: cardEntrar 0.4s ease-out both;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+}
+
+.colecao-grid .pokemon-card:hover {
+  transform: translateY(-8px) scale(1.04) !important;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65) !important;
+  border-color: rgba(255, 235, 59, 0.7) !important;
+}
+
+/* ===== HEADER COLORIDO POR TIPO ===== */
+.card-col-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 10px 6px;
+  flex-shrink: 0;
+  background: rgba(80, 80, 100, 0.6);
+}
+
+.colecao-grid .pokemon-card.normal   .card-col-header { background: linear-gradient(135deg, #A8A878dd, #A8A87888); }
+.colecao-grid .pokemon-card.fire     .card-col-header { background: linear-gradient(135deg, #F08030dd, #F0803088); }
+.colecao-grid .pokemon-card.water    .card-col-header { background: linear-gradient(135deg, #6890F0dd, #6890F088); }
+.colecao-grid .pokemon-card.electric .card-col-header { background: linear-gradient(135deg, #F8D030dd, #F8D03088); }
+.colecao-grid .pokemon-card.grass    .card-col-header { background: linear-gradient(135deg, #78C850dd, #78C85088); }
+.colecao-grid .pokemon-card.ice      .card-col-header { background: linear-gradient(135deg, #98D8D8dd, #98D8D888); }
+.colecao-grid .pokemon-card.fighting .card-col-header { background: linear-gradient(135deg, #C03028dd, #C0302888); }
+.colecao-grid .pokemon-card.poison   .card-col-header { background: linear-gradient(135deg, #A040A0dd, #A040A088); }
+.colecao-grid .pokemon-card.ground   .card-col-header { background: linear-gradient(135deg, #E0C068dd, #E0C06888); }
+.colecao-grid .pokemon-card.flying   .card-col-header { background: linear-gradient(135deg, #A890F0dd, #A890F088); }
+.colecao-grid .pokemon-card.psychic  .card-col-header { background: linear-gradient(135deg, #F85888dd, #F8588888); }
+.colecao-grid .pokemon-card.bug      .card-col-header { background: linear-gradient(135deg, #A8B820dd, #A8B82088); }
+.colecao-grid .pokemon-card.rock     .card-col-header { background: linear-gradient(135deg, #B8A038dd, #B8A03888); }
+.colecao-grid .pokemon-card.ghost    .card-col-header { background: linear-gradient(135deg, #705898dd, #70589888); }
+.colecao-grid .pokemon-card.dragon   .card-col-header { background: linear-gradient(135deg, #7038F8dd, #7038F888); }
+.colecao-grid .pokemon-card.dark     .card-col-header { background: linear-gradient(135deg, #705848dd, #70584888); }
+.colecao-grid .pokemon-card.steel    .card-col-header { background: linear-gradient(135deg, #B8B8D0dd, #B8B8D088); }
+.colecao-grid .pokemon-card.fairy    .card-col-header { background: linear-gradient(135deg, #EE99ACdd, #EE99AC88); }
+
+.card-col-name {
+  font-size: 9px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.75);
+  text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 110px;
+}
+
+.card-col-num {
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: monospace;
+  flex-shrink: 0;
+}
+
+/* ===== IMAGEM ===== */
+.colecao-grid .img-container {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05) !important;
+  margin: 0 6px;
+  border-radius: 8px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.colecao-grid .img-container img {
+  width: 118px;
+  height: 118px;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s;
+  image-rendering: pixelated;
+}
+
+.colecao-grid .pokemon-card:hover .img-container img {
+  transform: scale(1.1) translateY(-3px);
+}
+
+/* ===== FOOTER (TIPO + DATA) ===== */
+.card-col-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px 5px;
+  flex-shrink: 0;
+}
+
+.type-badge {
+  font-size: 7px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.date-obtido {
+  font-size: 6px;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: monospace;
+}
+
+/* ===== BOTÃO REMOVER ===== */
+.btn-remover-colecao {
+  position: absolute !important;
+  top: -9px !important;
+  right: -9px !important;
+  background: #ff1744 !important;
+  color: white !important;
+  border: 2px solid #fff !important;
+  border-radius: 50% !important;
+  width: 26px !important;
+  height: 26px !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4) !important;
+  z-index: 10;
+  transition: transform 0.2s, background 0.2s;
+  line-height: 1;
+}
+
+.btn-remover-colecao:hover {
+  transform: scale(1.18) rotate(10deg) !important;
+  background: #c62828 !important;
+  border-color: #ffeb3b !important;
+}
+
+/* ===== HOLO OVERLAY (adicionado por JS) ===== */
+.colecao-grid .pokemon-card .holo-overlay { display: none; }
+
+.colecao-grid .pokemon-card.col-raro {
+  border-color: rgba(255, 235, 59, 0.7) !important;
+  box-shadow: 0 0 16px rgba(255, 235, 59, 0.3), 0 6px 20px rgba(0,0,0,0.5) !important;
+}
+
+.colecao-grid .pokemon-card.col-raro .holo-overlay {
+  display: block;
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(
+    -45deg,
+    rgba(255, 0, 128, 0.1),
+    rgba(0, 200, 255, 0.1),
+    rgba(148, 0, 211, 0.1),
+    rgba(255, 165, 0, 0.1)
+  );
+  background-size: 300% 300%;
+  animation: holoShiftCol 4s ease infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.colecao-grid .pokemon-card.col-lendario {
+  border-color: #9c27b0 !important;
+  animation: cardEntrar 0.4s ease-out both, brilhoLendCol 2.5s infinite alternate !important;
+}
+
+.colecao-grid .pokemon-card.col-lendario .holo-overlay {
+  display: block;
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(
+    -45deg,
+    rgba(255, 215, 0, 0.22),
+    rgba(255, 255, 255, 0.15),
+    rgba(148, 0, 211, 0.28),
+    rgba(255, 215, 0, 0.22)
+  );
+  background-size: 300% 300%;
+  animation: holoShiftCol 2s ease infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+@keyframes holoShiftCol {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+@keyframes brilhoLendCol {
+  from { box-shadow: 0 0 18px #9c27b0, 0 6px 20px rgba(0,0,0,0.5); }
+  to   { box-shadow: 0 0 38px #9c27b0, 0 0 60px #e040fb, 0 6px 20px rgba(0,0,0,0.5); }
+}
+
+/* ===== FILTROS DA COLEÇÃO ===== */
+.colecao-filtros {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(10px);
+  border: 3px solid var(--pokemon-yellow) !important;
+  border-radius: 20px;
+  padding: 25px;
+  margin: 0 auto 30px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.filtro-nome {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.filtro-grupo {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filtro-tipo {
+  background: #333;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid var(--pokemon-yellow);
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  flex: 1;
+  max-width: 200px;
+  outline: none;
+}
+
+.btn-limpar {
+  background: #555 !important;
+  color: white !important;
+  padding: 18px 28px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-family: "Press Start 2P", cursive;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-limpar:hover {
+  background: #777 !important;
+  transform: scale(1.05);
+  color: var(--pokemon-yellow) !important;
+}
+
+.colecao-subtitulo {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  margin-bottom: 24px;
+}
+
+.colecao-vazia {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+  font-size: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.colecao-vazia p { color: white; font-size: 1.2rem; }
+
+.colecao-vazia .btn-abrir {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+/* ===== TEMA CLARO ===== */
+[data-theme="light"] .colecao-grid .pokemon-card {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="light"] .colecao-grid .pokemon-card:hover {
+  background: rgba(255, 255, 255, 0.99) !important;
+  border-color: rgba(198, 40, 40, 0.6) !important;
+}
+
+[data-theme="light"] .colecao-grid .img-container {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .card-col-num {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="light"] .date-obtido {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="light"] .colecao-subtitulo {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="light"] .filtro-nome {
+  background: rgba(0, 0, 0, 0.05);
+  color: #1a1a2e;
+}
+
+[data-theme="light"] .filtro-tipo {
+  background: #fff;
+  color: #1a1a2e;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 600px) {
+  .colecao-grid .pokemon-card {
+    width: 150px !important;
+    height: 220px !important;
+  }
+
+  .colecao-grid .img-container img {
+    width: 98px;
+    height: 98px;
+  }
+}

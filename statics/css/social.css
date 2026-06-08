@@ -1,0 +1,764 @@
+/* ============================================================
+   SOCIAL.CSS — POKÉDLE DIÁRIO
+   ============================================================ */
+
+.social-container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 32px 16px 72px;
+  text-align: center;
+}
+
+.social-container h1 {
+  font-size: 2.4rem;
+  color: var(--pokemon-yellow);
+  letter-spacing: 5px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 28px rgba(255, 215, 0, 0.5);
+}
+
+.social-subtitulo {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.88rem;
+  letter-spacing: 1.5px;
+  margin-bottom: 28px;
+}
+
+/* ============================================================
+   ABAS DE MODO
+   ============================================================ */
+
+.social-tabs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.13);
+  border-radius: 40px;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.tab-btn:hover {
+  border-color: rgba(255, 215, 0, 0.5);
+  color: var(--pokemon-yellow);
+  background: rgba(255, 215, 0, 0.06);
+}
+
+.tab-btn.active {
+  border-color: var(--pokemon-yellow);
+  background: var(--pokemon-yellow);
+  color: #1a1a1a;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 4px 0 #c8a000;
+  transform: translateY(-1px);
+}
+
+.tab-icon {
+  font-size: 1rem;
+}
+
+/* ============================================================
+   ZONE DE JOGO
+   ============================================================ */
+
+.game-zone {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 22px;
+  padding: 28px 20px 34px;
+  position: relative;
+}
+
+/* ============================================================
+   WRAPPERS VISUAIS (Silhueta e Pixel)
+   ============================================================ */
+
+.visual-wrapper {
+  margin-bottom: 20px;
+}
+
+.silhouette-box,
+.pixel-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle at 50% 55%,
+    rgba(255, 215, 0, 0.07) 0%,
+    rgba(10, 10, 25, 0.7) 80%);
+  border: 2px solid rgba(255, 215, 0, 0.15);
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4) inset;
+}
+
+.pixel-box {
+  border-radius: 18px;
+}
+
+#silhouette-img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  filter: brightness(0);
+  transition: filter 1.4s ease;
+}
+
+#pixel-canvas {
+  width: 180px;
+  height: 180px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.visual-hint {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  min-height: 18px;
+}
+
+/* ============================================================
+   DOTS DE TENTATIVAS
+   ============================================================ */
+
+.tentativas-bar {
+  display: flex;
+  gap: 11px;
+  justify-content: center;
+  margin: 16px 0 22px;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  transition: all 0.3s ease;
+}
+
+.dot.usado {
+  background: rgba(239, 83, 80, 0.55);
+  border-color: #ef5350;
+  box-shadow: 0 0 8px rgba(239, 83, 80, 0.4);
+}
+
+.dot.acerto {
+  background: rgba(102, 187, 106, 0.65);
+  border-color: #66bb6a;
+  box-shadow: 0 0 10px rgba(102, 187, 106, 0.5);
+}
+
+/* ============================================================
+   INPUT E AUTOCOMPLETE
+   ============================================================ */
+
+.busca-wrapper {
+  display: flex;
+  gap: 10px;
+  max-width: 520px;
+  margin: 0 auto 22px;
+}
+
+.input-relative {
+  flex: 1;
+  position: relative;
+}
+
+#game-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 20px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 2px solid rgba(255, 255, 255, 0.13);
+  border-radius: 40px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.22s, box-shadow 0.22s;
+}
+
+#game-input:focus {
+  border-color: var(--pokemon-yellow);
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.22);
+}
+
+#game-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+#game-input:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.autocomplete-items {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #18182c;
+  border: 1px solid rgba(255, 215, 0, 0.22);
+  border-radius: 16px;
+  max-height: 228px;
+  overflow-y: auto;
+  z-index: 200;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+}
+
+.autocomplete-items div {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.78);
+  text-align: left;
+  text-transform: capitalize;
+  transition: background 0.14s;
+}
+
+.autocomplete-items div:hover {
+  background: rgba(255, 215, 0, 0.14);
+  color: var(--pokemon-yellow);
+}
+
+.autocomplete-items::-webkit-scrollbar { width: 4px; }
+.autocomplete-items::-webkit-scrollbar-track { background: transparent; }
+.autocomplete-items::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.28);
+  border-radius: 2px;
+}
+
+#btn-adivinhar {
+  padding: 13px 26px;
+  background: var(--pokemon-yellow);
+  color: #1a1a1a;
+  border: none;
+  border-radius: 40px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 0 #c8a000;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+#btn-adivinhar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #c8a000;
+}
+
+#btn-adivinhar:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #c8a000;
+}
+
+#btn-adivinhar:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 4px 0 #c8a000;
+}
+
+/* ============================================================
+   CABEÇALHO DA TABELA CLÁSSICA
+   ============================================================ */
+
+.classic-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 750px;
+  margin: 0 auto 6px;
+  padding: 0 2px;
+}
+
+.ch-sprite {
+  width: 56px;
+  flex-shrink: 0;
+}
+
+.ch-cell {
+  flex: 1;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.32);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   LINHAS DE PALPITE
+   ============================================================ */
+
+.guesses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* Linha simples — Silhueta / Pixel */
+.guess-simples {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  animation: slideIn 0.32s ease;
+}
+
+.gs-nome {
+  flex: 1;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+
+.gs-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 13px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+.gs-badge.errado {
+  background: rgba(183, 28, 28, 0.3);
+  color: #ff8a80;
+  border: 1px solid rgba(239, 83, 80, 0.35);
+}
+
+.gs-badge.certo {
+  background: rgba(56, 142, 60, 0.3);
+  color: #a5d6a7;
+  border: 1px solid rgba(102, 187, 106, 0.35);
+}
+
+/* Linha clássica */
+.guess-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: slideIn 0.35s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.gc {
+  flex: 1;
+  border-radius: 11px;
+  padding: 10px 5px;
+  text-align: center;
+  font-size: 0.76rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 66px;
+  letter-spacing: 0.3px;
+}
+
+.gc-sprite {
+  flex: 0 0 56px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 11px;
+  min-height: 66px;
+}
+
+.gc-sprite img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.gc-nome {
+  flex: 1.4;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-transform: capitalize;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+}
+
+/* Cores das células */
+.cell-verde {
+  background: rgba(46, 125, 50, 0.8);
+  color: #c8e6c9;
+  border: 1px solid rgba(102, 187, 106, 0.45);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.cell-amarelo {
+  background: rgba(245, 162, 0, 0.82);
+  color: #1a1a1a;
+  border: 1px solid rgba(255, 215, 0, 0.5);
+}
+
+.cell-vermelho {
+  background: rgba(183, 28, 28, 0.72);
+  color: #ffcdd2;
+  border: 1px solid rgba(239, 83, 80, 0.4);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.type-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.4px;
+  margin: 2px;
+}
+
+/* Valor + seta em linhas separadas dentro de cada célula */
+.gc-val {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Seta direcional — sempre maior e bem visível */
+.gc-seta {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 900;
+  margin-top: 3px;
+  line-height: 1;
+}
+
+/* Bolinha colorida da espécie */
+.cor-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+
+/* Texto lendário */
+.lend-txt {
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+}
+
+/* Cabeçalho — coluna nome com flex maior (alinhado ao gc-nome) */
+.ch-nome {
+  flex: 1.4;
+}
+
+/* ============================================================
+   PAINEL DE RESULTADO
+   ============================================================ */
+
+.resultado-overlay {
+  margin-top: 28px;
+  animation: resultadoEntrar 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes resultadoEntrar {
+  from { opacity: 0; transform: scale(0.88) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.resultado-card {
+  background: linear-gradient(145deg, rgba(28, 28, 48, 0.98), rgba(18, 18, 32, 0.98));
+  border: 2px solid rgba(255, 215, 0, 0.25);
+  border-radius: 22px;
+  padding: 36px 28px 32px;
+  max-width: 440px;
+  margin: 0 auto;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.1), 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.resultado-card.vitoria {
+  border-color: rgba(102, 187, 106, 0.45);
+  box-shadow: 0 0 50px rgba(102, 187, 106, 0.18), 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.resultado-card.derrota {
+  border-color: rgba(239, 83, 80, 0.38);
+  box-shadow: 0 0 50px rgba(239, 83, 80, 0.14), 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.resultado-art {
+  width: 136px;
+  height: 136px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.45));
+  animation: flutuar-res 3.2s ease-in-out infinite;
+}
+
+@keyframes flutuar-res {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.resultado-card h2 {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin: 14px 0 6px;
+}
+
+.resultado-card h2.vit { color: #a5d6a7; }
+.resultado-card h2.der { color: #ef9a9a; }
+
+.resultado-card p {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.88rem;
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+.resultado-card p strong {
+  color: var(--pokemon-yellow);
+}
+
+.nome-pokemon {
+  color: var(--pokemon-yellow) !important;
+  font-size: 1.15rem !important;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: capitalize;
+  margin: 6px 0 14px !important;
+}
+
+.resultado-emoji-grid {
+  font-size: 1.25rem;
+  letter-spacing: 3px;
+  line-height: 2;
+  margin: 14px 0 18px;
+  font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+  white-space: pre;
+}
+
+.resultado-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.btn-resultado {
+  padding: 11px 24px;
+  border-radius: 40px;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-resultado.compartilhar {
+  background: var(--pokemon-yellow);
+  color: #1a1a1a;
+  box-shadow: 0 4px 0 #c8a000;
+}
+
+.btn-resultado.compartilhar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #c8a000;
+}
+
+.btn-resultado.proxima {
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn-resultado.proxima:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+/* ============================================================
+   UTILITÁRIOS
+   ============================================================ */
+
+.hidden {
+  display: none !important;
+}
+
+.social-loading {
+  padding: 52px 20px;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.88rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.social-loading::after {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--pokemon-yellow);
+  border-radius: 50%;
+  margin-left: 10px;
+  vertical-align: middle;
+  animation: blink-dot 1.1s infinite;
+}
+
+@keyframes blink-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(0.6); }
+}
+
+/* ============================================================
+   MODO CLARO
+   ============================================================ */
+
+[data-theme="light"] .social-container h1 {
+  text-shadow: 0 0 20px rgba(200, 160, 0, 0.4);
+}
+
+[data-theme="light"] .social-subtitulo {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] .tab-btn {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.13);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] .tab-btn:hover {
+  background: rgba(200, 160, 0, 0.08);
+}
+
+[data-theme="light"] .tab-btn.active {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .game-zone {
+  background: rgba(0, 0, 0, 0.025);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] #game-input {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #1a1a1a;
+}
+
+[data-theme="light"] #game-input::placeholder {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="light"] .autocomplete-items {
+  background: #f5f5fa;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .autocomplete-items div {
+  color: rgba(0, 0, 0, 0.72);
+}
+
+[data-theme="light"] .autocomplete-items div:hover {
+  background: rgba(200, 160, 0, 0.12);
+}
+
+[data-theme="light"] .gc-nome,
+[data-theme="light"] .gc-sprite {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .gc-nome {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .guess-simples {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.07);
+}
+
+[data-theme="light"] .gs-nome {
+  color: rgba(0, 0, 0, 0.82);
+}
+
+[data-theme="light"] .ch-cell {
+  color: rgba(0, 0, 0, 0.32);
+}
+
+[data-theme="light"] .resultado-card {
+  background: linear-gradient(145deg, #f0f0fa, #e8e8f5);
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .resultado-card p {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="light"] .btn-resultado.proxima {
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.7);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .btn-resultado.proxima:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .silhouette-box,
+[data-theme="light"] .pixel-box {
+  background: radial-gradient(circle at 50% 55%,
+    rgba(200, 160, 0, 0.08),
+    rgba(220, 220, 240, 0.9));
+  border-color: rgba(200, 160, 0, 0.25);
+}
+
+[data-theme="light"] .visual-hint {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="light"] .dot {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.18);
+}

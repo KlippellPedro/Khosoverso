@@ -1,0 +1,405 @@
+/* ===========================
+   HERO
+=========================== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 70px 10% 60px;
+  background:
+    radial-gradient(ellipse 55% 70% at 65% 50%, rgba(198, 40, 40, 0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 50% at 30% 40%, rgba(255, 235, 59, 0.08) 0%, transparent 65%);
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+}
+
+/* Grade de pontos decorativos no fundo do hero */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 235, 59, 0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 100% at 70% 50%, black 40%, transparent 100%);
+}
+
+.hero-texto {
+  max-width: 520px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-texto h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.hero-subtitulo {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 32px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.botao-cta {
+  display: inline-block;
+  background: var(--pokemon-yellow);
+  color: #1a1a1a;
+  padding: 16px 32px;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 13px;
+  border-radius: 10px;
+  border-bottom: 5px solid #c8a000;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 18px rgba(255, 235, 59, 0.35);
+}
+
+.botao-cta:hover {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+  box-shadow: 0 2px 10px rgba(255, 235, 59, 0.25);
+}
+
+.pokemon-flutuante {
+  width: 380px;
+  max-width: 90vw;
+  animation: flutuar 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 20px 30px rgba(198, 40, 40, 0.4));
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-18px); }
+}
+
+/* ===========================
+   ESTATÍSTICAS
+=========================== */
+.estatisticas-mundo {
+  text-align: center;
+  padding: 60px 10%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 100%);
+  color: white;
+  position: relative;
+}
+
+.estatisticas-mundo h2 {
+  margin-bottom: 40px;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(14px);
+  border: 2px solid rgba(255, 235, 59, 0.35);
+  border-top: 4px solid var(--pokemon-yellow);
+  padding: 30px 24px 24px;
+  border-radius: 16px;
+  width: 210px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.4), 0 0 0 0 rgba(255,235,59,0);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.55), 0 0 20px rgba(255,235,59,0.2);
+  border-color: rgba(255, 235, 59, 0.8);
+}
+
+.stat-card h3 {
+  font-size: 2.4rem;
+  color: var(--pokemon-yellow);
+  margin: 0;
+  font-family: "Press Start 2P", cursive;
+  text-shadow: 2px 2px 0 #c62828, 4px 4px 0 rgba(0,0,0,0.3);
+}
+
+.stat-card p {
+  font-size: 10px;
+  color: rgba(255,255,255,0.65);
+  margin: 0;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ===========================
+   POKÉMON DO DIA
+=========================== */
+.pokemon-destaque {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 10%;
+  transition: background 0.8s ease;
+}
+
+.destaque-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 50px;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, rgba(10,10,20,0.95) 0%, rgba(30,30,50,0.85) 100%);
+  padding: 44px;
+  border-radius: 22px;
+  border: 3px solid rgba(255,235,59,0.5);
+  max-width: 920px;
+  width: 100%;
+  box-shadow: 0 0 40px rgba(255,235,59,0.12), 0 20px 60px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fundo decorativo do card de destaque */
+.destaque-content::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 60%;
+  height: 160%;
+  background: radial-gradient(ellipse, rgba(255,235,59,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+#destaque-img {
+  width: 280px;
+  max-width: 80vw;
+  filter: drop-shadow(0 12px 20px rgba(0,0,0,0.7));
+  transition: opacity 0.5s ease;
+  animation: flutuar 4s ease-in-out infinite;
+}
+
+.info-destaque {
+  flex: 1;
+  min-width: 280px;
+}
+
+.info-destaque h3 {
+  color: rgba(255, 235, 59, 0.7);
+  font-size: 10px;
+  margin-bottom: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+#destaque-nome {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.6rem;
+  margin-bottom: 14px;
+  color: #fff;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+}
+
+#destaque-tipo {
+  font-family: "Press Start 2P", cursive;
+  font-size: 9px;
+  display: inline-block;
+  margin-bottom: 18px;
+  margin-top: 8px;
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+#destaque-desc {
+  line-height: 1.7;
+  margin-bottom: 22px;
+  color: #ccc;
+  font-size: 0.92rem;
+}
+
+.stats { width: 100%; }
+
+.stat-barra {
+  background: rgba(255,255,255,0.1);
+  height: 14px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.stat-barra .fill {
+  background: linear-gradient(90deg, #ffeb3b, #f57f17);
+  height: 100%;
+  font-size: 7px;
+  color: rgba(0,0,0,0.7);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding-left: 6px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tipo {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* ===========================
+   RECURSOS (cards de navegação)
+=========================== */
+.recursos {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 60px 10%;
+  flex-wrap: wrap;
+}
+
+.recurso-item {
+  background: rgba(20, 20, 30, 0.75);
+  backdrop-filter: blur(12px);
+  padding: 32px 28px;
+  width: 270px;
+  text-align: center;
+  border-radius: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-top: 4px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Cor do topo por posição */
+.recursos .recurso-item:nth-child(1) { border-top-color: #43a047; }
+.recursos .recurso-item:nth-child(2) { border-top-color: var(--pokemon-yellow); }
+.recursos .recurso-item:nth-child(3) { border-top-color: var(--neon-blue); }
+
+.recurso-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+}
+.recursos .recurso-item:nth-child(1):hover { border-color: #43a047; box-shadow: 0 18px 45px rgba(67,160,71,0.25); }
+.recursos .recurso-item:nth-child(2):hover { border-color: var(--pokemon-yellow); box-shadow: 0 18px 45px rgba(255,235,59,0.2); }
+.recursos .recurso-item:nth-child(3):hover { border-color: var(--neon-blue); box-shadow: 0 18px 45px rgba(0,229,255,0.2); }
+
+.recurso-item h3 {
+  color: var(--pokemon-yellow);
+  margin: 0;
+  font-size: 14px;
+  text-shadow: 1px 1px #000;
+}
+
+.recurso-item > p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.recurso-item a {
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.recurso-item a p {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: bold;
+  font-size: 11px;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.recurso-item a p:hover {
+  background: rgba(255, 235, 59, 0.18);
+  color: var(--pokemon-yellow);
+}
+
+/* ===========================
+   TEMA CLARO
+=========================== */
+[data-theme="light"] .hero {
+  background:
+    radial-gradient(ellipse 55% 70% at 65% 50%, rgba(198, 40, 40, 0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 50% at 30% 40%, rgba(255, 235, 59, 0.05) 0%, transparent 65%);
+}
+
+[data-theme="light"] .hero::before {
+  background-image: radial-gradient(rgba(198, 40, 40, 0.12) 1px, transparent 1px);
+}
+
+[data-theme="light"] .hero-subtitulo { color: rgba(0,0,0,0.45); }
+
+[data-theme="light"] .estatisticas-mundo {
+  background: linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.03) 100%);
+  color: var(--text-color);
+}
+
+[data-theme="light"] .stat-card {
+  background: rgba(255,255,255,0.88);
+  border-color: rgba(198, 40, 40, 0.3);
+  border-top-color: #c62828;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+[data-theme="light"] .stat-card:hover {
+  box-shadow: 0 14px 36px rgba(0,0,0,0.15), 0 0 20px rgba(198,40,40,0.12);
+}
+
+[data-theme="light"] .stat-card p { color: rgba(0,0,0,0.5); }
+
+[data-theme="light"] .destaque-content {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(240,242,245,0.9) 100%);
+  box-shadow: 0 0 40px rgba(198,40,40,0.1), 0 20px 60px rgba(0,0,0,0.12);
+  border-color: rgba(198, 40, 40, 0.3);
+}
+
+[data-theme="light"] #destaque-nome { color: #1a1a2e; }
+[data-theme="light"] #destaque-desc { color: #555; }
+[data-theme="light"] .stat-barra { background: rgba(0,0,0,0.1); }
+[data-theme="light"] .info-destaque h3 { color: rgba(198, 40, 40, 0.7); }
+
+[data-theme="light"] .recurso-item {
+  background: rgba(255,255,255,0.88);
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+[data-theme="light"] .recurso-item h3 { color: #c62828; }
+[data-theme="light"] .recurso-item > p { color: rgba(0,0,0,0.55); }
+
+[data-theme="light"] .recurso-item a p {
+  background: rgba(0,0,0,0.06);
+  color: rgba(0,0,0,0.65);
+}
+
+[data-theme="light"] .recurso-item a p:hover {
+  background: rgba(198,40,40,0.1);
+  color: #c62828;
+}

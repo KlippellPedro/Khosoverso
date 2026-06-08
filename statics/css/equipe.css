@@ -1,0 +1,394 @@
+/* ===== CONTAINER ===== */
+.equipe-container {
+  padding-top: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+.subtitulo {
+  font-size: 13px;
+  color: var(--pokemon-yellow);
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 0px #000;
+}
+
+/* ===== BARRA DE BUSCA ===== */
+.busca-equipe {
+  padding: 28px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 700px;
+  width: 95%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 3px solid var(--pokemon-yellow);
+  box-shadow: 0 0 25px rgba(255, 235, 59, 0.2);
+  margin: 0 auto 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#input-equipe {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 2px solid var(--pokemon-yellow);
+  background: var(--input-bg);
+  color: var(--input-color);
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#input-equipe:focus {
+  box-shadow: 0 0 0 3px rgba(255, 235, 59, 0.2);
+}
+
+#btn-add {
+  background: #43a047;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 0px #2e7d32;
+  transition: all 0.2s;
+  align-self: center;
+}
+
+#btn-add:hover {
+  background: #388e3c;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0px #2e7d32;
+}
+
+.msg-aviso {
+  min-height: 20px;
+  font-size: 12px;
+  color: #ff5252;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* ===== GRID DOS 6 SLOTS ===== */
+.time-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  justify-content: center;
+  margin-bottom: 60px;
+  width: 95%;
+  max-width: 1150px;
+}
+
+/* ===== SLOT BASE ===== */
+.slot {
+  width: 185px;
+  height: 272px;
+  border-radius: 14px;
+  border: 3px dashed rgba(255, 235, 59, 0.2);
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  overflow: hidden;
+  animation: slotEntrar 0.4s ease-out both;
+  cursor: default;
+  box-sizing: border-box;
+}
+
+@keyframes slotEntrar {
+  from { opacity: 0; transform: translateY(24px) scale(0.88); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+/* ===== SLOT VAZIO ===== */
+.slot-vazio-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  opacity: 0.45;
+  transition: opacity 0.3s;
+}
+
+.slot:not(.preenchido):hover .slot-vazio-content { opacity: 0.65; }
+
+/* Pokébola desenhada em CSS */
+.pokeball-vazio {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 235, 59, 0.45);
+  position: relative;
+  overflow: hidden;
+}
+.pokeball-vazio::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: rgba(198, 40, 40, 0.25);
+}
+.pokeball-vazio::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 235, 59, 0.45);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.slot-vazio-num {
+  font-size: 10px;
+  font-weight: bold;
+  color: rgba(255, 235, 59, 0.55);
+  letter-spacing: 1.2px;
+}
+
+.slot-vazio-hint {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+/* ===== SLOT PREENCHIDO ===== */
+.slot.preenchido {
+  border-style: solid;
+  border-color: rgba(255, 235, 59, 0.4);
+  background: linear-gradient(180deg, rgba(18, 18, 30, 0.98) 0%, rgba(12, 12, 22, 1) 100%);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55);
+  justify-content: flex-start;
+}
+
+.slot.preenchido:hover {
+  transform: translateY(-7px) scale(1.04);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+  border-color: rgba(255, 235, 59, 0.85);
+}
+
+/* Header colorido pelo tipo */
+.slot-header {
+  width: 100%;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+.slot-num-label {
+  font-size: 9px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.3px;
+}
+
+.slot-tipo-badge {
+  font-size: 8px;
+  font-weight: bold;
+  padding: 2px 9px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* Arte do Pokémon */
+.slot-arte {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 6px 4px;
+}
+
+.slot-arte img {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.55));
+  transition: transform 0.3s;
+}
+
+.slot.preenchido:hover .slot-arte img {
+  transform: scale(1.1) translateY(-4px);
+}
+
+/* Rodapé com nome */
+.slot-rodape {
+  width: 100%;
+  padding: 6px 10px 10px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.nome-slot {
+  font-size: 11px;
+  font-weight: 900;
+  color: #ffeb3b;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+/* ===== BOTÃO REMOVER ===== */
+.btn-remover {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  background: #ff1744;
+  color: white;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-remover:hover {
+  transform: scale(1.15) rotate(10deg);
+  background: #c62828;
+  border-color: #ffeb3b;
+}
+
+/* ===== HOLOGRÁFICO — RARO ===== */
+.slot-raro {
+  border-color: rgba(255, 235, 59, 0.75) !important;
+  box-shadow: 0 0 16px rgba(255, 235, 59, 0.35), 0 6px 22px rgba(0,0,0,0.55) !important;
+}
+
+.slot-raro .holo-overlay {
+  display: block;
+  position: absolute;
+  inset: 0;
+  border-radius: 11px;
+  background: linear-gradient(
+    -45deg,
+    rgba(255, 0, 128, 0.1),
+    rgba(0, 200, 255, 0.1),
+    rgba(148, 0, 211, 0.1),
+    rgba(255, 165, 0, 0.1)
+  );
+  background-size: 300% 300%;
+  animation: holoShiftEq 4s ease infinite;
+  pointer-events: none;
+}
+
+/* ===== HOLOGRÁFICO — LENDÁRIO ===== */
+.slot-lendario {
+  border-color: #9c27b0 !important;
+  animation: slotEntrar 0.4s ease-out both, brilhoLendSlot 2.5s infinite alternate !important;
+}
+
+.slot-lendario .holo-overlay {
+  display: block;
+  position: absolute;
+  inset: 0;
+  border-radius: 11px;
+  background: linear-gradient(
+    -45deg,
+    rgba(255, 215, 0, 0.22),
+    rgba(255, 255, 255, 0.15),
+    rgba(148, 0, 211, 0.28),
+    rgba(255, 215, 0, 0.22)
+  );
+  background-size: 300% 300%;
+  animation: holoShiftEq 2s ease infinite;
+  pointer-events: none;
+}
+
+.holo-overlay { display: none; }
+
+@keyframes holoShiftEq {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+@keyframes brilhoLendSlot {
+  from { box-shadow: 0 0 18px #9c27b0, 0 6px 22px rgba(0,0,0,0.55); }
+  to   { box-shadow: 0 0 38px #9c27b0, 0 0 60px #e040fb, 0 6px 22px rgba(0,0,0,0.55); }
+}
+
+/* ===== AUTOCOMPLETE ===== */
+.autocomplete-items {
+  top: 100%;
+  background-color: var(--autocomplete-bg);
+  border: 2px solid var(--pokemon-yellow);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.autocomplete-items div {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  border-bottom: 1px solid var(--autocomplete-sep);
+  text-align: left;
+  color: var(--autocomplete-text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.2s;
+}
+
+.autocomplete-items div:last-child { border-bottom: none; }
+.autocomplete-items div:hover {
+  background-color: rgba(255, 235, 59, 0.18);
+  color: var(--pokemon-yellow);
+}
+
+/* ===== TEMA CLARO ===== */
+[data-theme="light"] .slot {
+  border-color: rgba(198, 40, 40, 0.25);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+[data-theme="light"] .slot.preenchido {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(198, 40, 40, 0.5);
+}
+
+[data-theme="light"] .slot.preenchido:hover {
+  background: rgba(255, 255, 255, 0.97);
+}
+
+[data-theme="light"] .nome-slot {
+  color: #c62828;
+  text-shadow: none;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 600px) {
+  .time-grid { gap: 14px; }
+  .slot { width: 155px; height: 235px; }
+  .slot-arte img { width: 105px; height: 105px; }
+  .busca-equipe { padding: 18px; }
+}
