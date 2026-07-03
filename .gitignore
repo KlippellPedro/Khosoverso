@@ -1,0 +1,10 @@
+# Node
+node_modules/
+
+# Claude
+.claude/
+
+# SO
+.DS_Store
+Thumbs.db
+desktop.ini

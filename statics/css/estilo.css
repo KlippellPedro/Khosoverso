@@ -1,970 +1,471 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap");
+
+/* ====================================================================
+   TEMA GLOBAL — Supremacia do Protesto (mesma identidade da Ficha)
+   ==================================================================== */
 :root {
-  --primary-red: #c62828;
-  --pokemon-yellow: #ffeb3b;
-  --bg-dark: #212121;
-  --font-standard: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --type-grass: #78c850;
-  --type-fire: #f08030;
-  --type-water: #6890f0;
-  --type-bug: #a8b820;
-  --type-normal: #a8a878;
-  --type-poison: #a040a0;
-  --type-electric: #f8d030;
-  --type-ground: #e0c068;
-  --type-fairy: #ee99ac;
-  --type-fighting: #c03028;
-  --type-psychic: #f85888;
-  --type-rock: #b8a038;
-  --type-ghost: #705898;
-  --type-ice: #98d8d8;
-  --type-dragon: #7038f8;
-  --type-dark: #705848;
-  --glass-bg: rgba(0, 0, 0, 0.75);
-  --neon-blue: #00e5ff;
+  --font-heading: "Cinzel", "Segoe UI", serif;
+  --font-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
-  /* Variáveis que mudam com o tema — padrão escuro */
-  --bg-color: #212121;
-  --bg-dot: #333;
-  --text-color: #ffffff;
-  --input-bg: rgba(255, 255, 255, 0.05);
-  --input-border: #555;
-  --input-color: white;
-  --autocomplete-bg: rgba(0, 0, 0, 0.95);
-  --autocomplete-text: white;
-  --autocomplete-sep: rgba(255, 255, 255, 0.1);
-  --dropdown-text: white;
-  --admin-filter-bg: rgba(255, 255, 255, 0.05);
-  --admin-input-bg: #111;
-  --admin-input-border: #444;
-  --table-border: #333;
-  --toggle-bg: rgba(0, 0, 0, 0.35);
-  --toggle-text: #ffffff;
-  --toggle-border: rgba(255, 255, 255, 0.45);
+  --bg-main: #09090b;     /* preto neutro profundo */
+  --bg-card: #18181b;     /* cinza zinco escuro */
+  --bg-input: #27272a;    /* cinza zinco médio */
+  --bg-elev: #1f1f23;
+  --bg-dot: rgba(255, 255, 255, 0.045); /* textura de pontinhos */
+
+  --primary: #ff4444;
+  --primary-glow: rgba(255, 68, 68, 0.3);
+  --secondary: #457b9d;
+  --secondary-glow: rgba(69, 123, 157, 0.3);
+
+  --text-main: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --text-faint: #71717a;
+
+  --border-color: #3f3f46;
+  --success: #4ade80;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  --transition: 0.25s ease;
 }
 
-/* ===== TEMA CLARO ===== */
-[data-theme="light"] {
-  --bg-color: #f0f2f5;
-  --bg-dot: #c4c8ce;
-  --text-color: #1a1a2e;
-  --glass-bg: rgba(255, 255, 255, 0.88);
-  --input-bg: rgba(0, 0, 0, 0.04);
-  --input-border: #bbb;
-  --input-color: #1a1a2e;
-  --autocomplete-bg: rgba(255, 255, 255, 0.98);
-  --autocomplete-text: #1a1a2e;
-  --autocomplete-sep: rgba(0, 0, 0, 0.08);
-  --dropdown-text: #333;
-  --admin-filter-bg: rgba(0, 0, 0, 0.04);
-  --admin-input-bg: #ebebeb;
-  --admin-input-border: #ccc;
-  --table-border: #e0e0e0;
-  --toggle-bg: rgba(0, 0, 0, 0.18);
-  --toggle-text: #fff;
-  --toggle-border: rgba(255, 255, 255, 0.65);
-}
-
-[data-theme="light"] h1 {
-  color: #c62828;
-  text-shadow: 4px 4px 0px #ffeb3b, 6px 6px 0px rgba(0, 0, 0, 0.12);
-}
-
-[data-theme="light"] h2 {
-  color: #c62828;
-  text-shadow: 2px 2px 0px #ffeb3b;
-}
-
-[data-theme="light"] .titulo-secao {
-  color: #c62828;
-  text-shadow: 2px 2px 0px #ffeb3b;
-}
-
-/* Garante que o tamanho dos elementos inclua bordas e preenchimentos */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  padding: 0;
-  font-family: var(--font-standard);
-  background-color: var(--bg-color);
+  font-family: var(--font-body);
+  color: var(--text-main);
+  background-color: var(--bg-main);
   background-image: radial-gradient(var(--bg-dot) 1px, transparent 1px);
-  background-size: 20px 20px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-size: 22px 22px;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
-/* --------------------------INICIO DO MENU DAS PAGINAS-------------------------- */
-.menu {
-  /* Formatação da barra vermelha do menu*/
+::selection { background: var(--primary); color: #fff; }
+
+body::-webkit-scrollbar { width: 9px; }
+body::-webkit-scrollbar-track { background: var(--bg-main); }
+body::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+body::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ===== TÍTULOS ===== */
+h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-main);
+  text-align: center;
+  margin: 0 0 6px;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+h1::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: 14px auto 0;
+  background: var(--primary);
+  box-shadow: 0 0 12px var(--primary-glow);
+  border-radius: 2px;
+}
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-main);
+  text-align: center;
+}
+
+/* ====================================================================
+   BARRA SUPERIOR (MENU)
+   ==================================================================== */
+.topbar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 70px;
-  background: #c62828;
+  right: 0;
+  height: 62px;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  margin: 0;
-  background: linear-gradient(180deg, #c62828 0%, #a51d1d 100%);
-  border-bottom: 4px solid #8e1a1a;
-  z-index: 10000;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  padding: 0 28px;
+  background: rgba(9, 9, 11, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
 }
 
-.menu-nav {
+.topbar-links {
+  display: flex;
+  gap: 26px;
   flex: 1;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
 }
 
-.menu-controls {
+.topbar-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  padding: 6px 0;
+  position: relative;
+  transition: color var(--transition);
+}
+.topbar-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width var(--transition);
+}
+.topbar-link:hover,
+.topbar-link.active {
+  color: var(--primary);
+  text-shadow: 0 0 8px var(--primary-glow);
+}
+.topbar-link:hover::after,
+.topbar-link.active::after { width: 100%; }
+
+.topbar-logo {
+  position: absolute;
+  left: 22px;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 0 14px 0 6px;
-  flex-shrink: 0;
-}
-
-.btn-toggle {
-  background: var(--toggle-bg);
-  color: var(--toggle-text);
-  border: 2px solid var(--toggle-border);
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  letter-spacing: 0.5px;
-  min-width: 54px;
-  text-align: center;
-}
-
-.btn-toggle:hover {
-  background: rgba(255, 235, 59, 0.3);
-  border-color: var(--pokemon-yellow);
-  color: var(--pokemon-yellow);
-  transform: scale(1.06);
-}
-
-.menu-item {
-  /* Formatação para as escritas do menu (Inicio, Pokédex, Equipe, Pacotes, Social) */
-  color: #fff;
+  color: var(--primary);
   text-decoration: none;
-  font-size: 13px;
-  font-weight: bold;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  transition: filter var(--transition);
+}
+.topbar-logo svg { width: 24px; height: 24px; filter: drop-shadow(0 0 6px var(--primary-glow)); }
+.topbar-logo:hover { filter: brightness(1.25); }
+
+.topbar-acoes {
+  position: absolute;
+  right: 22px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.2s ease-in-out;
-}
-
-.menu-item:hover {
-  /* Formatação para quando passa o mouse pelos itens do menu */
-  transform: scale(1.15);
-  color: #ffeb3b;
-  text-shadow: 0 0 8px #ffeb3b;
-}
-
-.menu-item.active {
-  /* Formatação para quando esta em determinada pagina do menu */
-  color: var(--neon-blue);
-  text-shadow: 0 0 10px var(--neon-blue);
+  gap: 8px;
 }
 
 main {
-  /*espaço para as coisas não ficarem embaixo do menu */
-  padding-top: 74px; /* Ajustado para 70px de altura + 4px de borda */
-  color: var(--text-color);
-}
-/* --------------------------FIM DO MENU DAS PAGINAS-------------------------- */
-
-/* --------------------------INICIO DA PARTE DA FORMATAÇÃO DE TEXTOS-------------------------- */
-h1 {
-  /* deixa o titulo mundo pokemon estilizado do jeito que esta */
-  font-size: 40px;
-  margin-bottom: 15px;
-  color: #ffeb3b;
-  text-shadow:
-    4px 4px 0px #c62828,
-    6px 6px 0px #000;
-  font-weight: 900;
+  padding-top: 62px;
 }
 
-h2 {
-  text-align: center;
-  font-size: 22px;
-  margin: 40px 0 20px 0;
-  color: #ffeb3b;
-  text-shadow: 2px 2px 0px #c62828;
-}
+/* ====================================================================
+   BOTÕES
+   ==================================================================== */
+button { font-family: var(--font-body); cursor: pointer; }
 
-p {
-  /*esta sendo usado para paragrafos comuns na pagina */
-  line-height: 1.5;
-  font-size: 13px;
-  margin-bottom: 15px;
-  color: var(--text-color);
-  font-family: Arial, Helvetica, sans-serif;
+.btn {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: #fff;
+  padding: 11px 22px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: filter var(--transition), transform 0.15s, box-shadow var(--transition);
 }
+.btn:hover { filter: brightness(1.12); transform: translateY(-1px); box-shadow: 0 6px 18px var(--primary-glow); }
+.btn:active { transform: translateY(0); filter: brightness(0.95); }
 
-h4.negrito {
-  /*esta sendo usado para paragrafos comuns na pagina */
-  font-family: sans-serif;
-  font-weight: bold;
+.btn-sec {
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-muted);
+  padding: 11px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  transition: all var(--transition);
 }
-/* --------------------------FIM DA FORMATAÇÃO DOS TEXTOS-------------------------- */
+.btn-sec:hover { border-color: var(--primary); color: var(--primary); }
 
-/* --------------------------INICIO DAS CORES DOS CARDS E TIPOS DOS POKEMONS-------------------------- */
-.tipo.grass,
-.pokemon-card.grass {
-  background-color: var(--type-grass);
+/* Botões "fantasma" da barra superior */
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all var(--transition);
 }
+.btn-ghost:hover { border-color: var(--primary); color: var(--primary); box-shadow: 0 0 10px var(--primary-glow); }
 
-.tipo.fire,
-.pokemon-card.fire {
-  background-color: var(--type-fire);
-}
-
-.tipo.water,
-.pokemon-card.water {
-  background-color: var(--type-water);
-}
-
-.tipo.bug,
-.pokemon-card.bug {
-  background-color: var(--type-bug);
-}
-
-.tipo.normal,
-.pokemon-card.normal {
-  background-color: var(--type-normal);
-  color: #333;
-}
-
-.tipo.poison,
-.pokemon-card.poison {
-  background-color: var(--type-poison);
-}
-
-.tipo.electric,
-.pokemon-card.electric {
-  background-color: var(--type-electric);
-  color: #333;
-}
-
-.tipo.ground,
-.pokemon-card.ground {
-  background-color: var(--type-ground);
-  color: #333;
-}
-
-.tipo.fairy,
-.pokemon-card.fairy {
-  background-color: var(--type-fairy);
-  color: #333;
-}
-
-.tipo.fighting,
-.pokemon-card.fighting {
-  background: #c03028;
-}
-
-.tipo.psychic,
-.pokemon-card.psychic {
-  background: #f85888;
-}
-
-.tipo.rock,
-.pokemon-card.rock {
-  background: #b8a038;
-}
-
-.tipo.ghost,
-.pokemon-card.ghost {
-  background: #705898;
-}
-
-.tipo.ice,
-.pokemon-card.ice {
-  background: #98d8d8;
-  color: #333;
-}
-
-.tipo.dragon,
-.pokemon-card.dragon {
-  background: #7038f8;
-}
-
-/* --- ESTILOS PARA MENSAGENS FLASH --- */
-.flash-messages {
-  position: fixed;
-  top: 85px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 500px;
-  text-align: center;
-  z-index: 999;
-}
-
-.alert {
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(5px);
-  color: white;
-  border: 1px solid #ffeb3b;
-  font-size: 14px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  pointer-events: auto;
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
-}
-
-.alert-danger {
-  border-color: #f44336;
-}
-.alert-success {
-  border-color: #4caf50;
-}
-.alert-warning {
-  border-color: #ff9800;
-}
-
-/* --- USER DROPDOWN (O MENU DO CARINHA) --- */
-.user-dropdown {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.menu-icon-user {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  background: white;
-  transition: transform 0.2s;
-}
-
-.dropdown-trigger {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.8);
-  z-index: 10001;
-  border-radius: 10px;
-  border: 2px solid var(--pokemon-yellow);
-  overflow: hidden;
-  margin-top: 5px;
-}
-
-.dropdown-content a {
-  color: var(--dropdown-text);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  font-size: 12px;
-  transition: background 0.2s;
-}
-
-.dropdown-content a:hover {
-  background-color: rgba(255, 235, 59, 0.2);
-  color: var(--pokemon-yellow);
-}
-
-.dropdown-content .logout-link {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ff5252;
-}
-
-.dropdown-content .logout-link:hover {
-  background-color: rgba(198, 40, 40, 0.3);
-  color: #ff1744;
-}
-
-.user-dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.user-dropdown:hover .menu-icon-user {
-  transform: scale(1.1);
-  border-color: var(--pokemon-yellow);
-}
-
-/* -------------------------- INÍCIO ESTILOS DE AUTENTICAÇÃO (LOGIN/REGISTRO) -------------------------- */
-.auth-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 74px);
-  padding: 30px 20px;
-  background:
-    radial-gradient(ellipse 50% 60% at 50% 50%, rgba(198,40,40,0.12) 0%, transparent 70%);
-}
-
-.auth-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(14px);
-  border: 2px solid rgba(255, 235, 59, 0.35);
-  padding: 0;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 420px;
-  box-shadow: 0 0 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,235,59,0.1);
-  text-align: center;
-  animation: fadeIn 0.45s ease-out;
-  overflow: hidden;
-}
-
-/* Faixa decorativa vermelha no topo do card de auth */
-.auth-card::before {
-  content: '';
-  display: block;
-  height: 6px;
-  background: linear-gradient(90deg, #c62828 0%, #ffeb3b 50%, #c62828 100%);
-}
-
-/* Conteúdo interno do auth-card */
-.auth-card > * { padding: 0 40px; }
-.auth-card > .auth-icon { padding-top: 36px; padding-bottom: 0; }
-.auth-card > h1 { padding-top: 8px; padding-bottom: 0; }
-.auth-card > .auth-form { padding-bottom: 8px; }
-.auth-card > .auth-footer { padding-bottom: 28px; }
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.form-group {
-  text-align: left;
-  width: 100%; /* Ensure it takes full width */
-  box-sizing: border-box; /* Include padding/border in width */
-}
-
-.form-group label {
-  display: block;
-  font-weight: bold;
-  font-size: 12px;
-  color: var(--pokemon-yellow);
-  margin-bottom: 8px;
-}
-
-.form-control {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 2px solid var(--input-border);
-  background: var(--input-bg);
-  color: var(--input-color);
+/* ====================================================================
+   INPUTS / SELECTS
+   ==================================================================== */
+input[type="text"], select {
+  font-family: var(--font-body);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 6px;
+  padding: 11px 14px;
   outline: none;
-  box-sizing: border-box;
-  transition: border-color 0.3s;
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
-
-.form-control option {
-  background-color: var(--bg-dark); /* Garante que o fundo das opções seja escuro */
-  color: white; /* Mantém o texto branco para leitura */
+input[type="text"]:focus, select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
 }
+select option { background: var(--bg-input); color: var(--text-main); }
 
-.form-control:focus {
-  border-color: var(--pokemon-yellow);
-}
-
-/* --- CONTAINER PADRÃO DE SEÇÃO (Fix para o Admin e Pokedex) --- */
+/* ====================================================================
+   CONTAINER PADRÃO DE PÁGINA
+   ==================================================================== */
 .pokedex-container {
-  padding: 100px 20px 50px 20px;
+  padding: 48px 20px 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  box-sizing: border-box;
 }
 
-/* --- ESTILIZAÇÃO CUSTOMIZADA PARA UPLOAD DE FOTO --- */
-.file-upload-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.file-input-hidden {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
-
-.file-input-label {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px dashed #555;
-  border-radius: 8px;
-  color: #aaa;
+.page-intro {
+  color: var(--text-muted);
+  max-width: 540px;
   text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-  font-size: 13px;
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
-.file-input-hidden:focus + .file-input-label,
-.file-input-label:hover {
-  border-color: var(--pokemon-yellow);
-  color: var(--pokemon-yellow);
-  background: rgba(255, 235, 59, 0.05);
-  border-style: solid;
+/* ====================================================================
+   BADGES DE ELEMENTO / RARIDADE (cores aplicadas inline pelo JS)
+   ==================================================================== */
+.type-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+.raridade {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.btn-abrir {
-  background: var(--pokemon-yellow);
-  color: #000;
-  border: none;
-  padding: 15px;
+/* ====================================================================
+   TOAST GLOBAL
+   ==================================================================== */
+#toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--primary);
+  color: var(--text-main);
+  padding: 13px 22px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 3000;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+  max-width: 90%;
+}
+#toast.toast-show { transform: translateX(-50%) translateY(0); opacity: 1; }
+#toast.toast-erro { border-left-color: var(--danger); }
+#toast.toast-ok { border-left-color: var(--success); }
+
+/* ====================================================================
+   UTILIDADES
+   ==================================================================== */
+.hidden { display: none !important; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 640px) {
+  .topbar { padding: 0 12px; height: 56px; }
+  .topbar-links { gap: 14px; }
+  .topbar-link { font-size: 0.66rem; letter-spacing: 1px; }
+  .topbar-acoes { position: static; }
+  .topbar-logo { left: 12px; }
+  .topbar-logo span { display: none; }
+  main { padding-top: 56px; }
+}
+
+/* ====================================================================
+   BOTÃO DE ENGRENAGEM (TEMA) + MODAL DE CORES
+   ==================================================================== */
+.btn-tema {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 32px;
+  padding: 0;
+}
+.btn-tema svg { width: 16px; height: 16px; fill: currentColor; }
+
+.tema-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4000;
+  animation: fadeIn 0.2s ease;
+}
+.tema-modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-top: 3px solid var(--primary);
   border-radius: 10px;
-  font-weight: bold;
-  font-size: 14px;
+  padding: 28px;
+  width: 92%;
+  max-width: 360px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+.tema-modal h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin: 0 0 18px;
+}
+.tema-presets {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.tema-preset {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
   cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 4px 0 #b8a038;
-  width: 100%;
-  margin-top: 10px;
+  transition: transform 0.15s, border-color var(--transition);
 }
-
-.btn-abrir:hover {
-  background: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #b8a038;
+.tema-preset:hover { transform: scale(1.1); border-color: var(--text-main); }
+.tema-campo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+  color: var(--text-main);
 }
-
-.btn-abrir:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 #b8a038;
-}
-
-.btn-limpar {
-  background: #555;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 12px;
+.tema-campo input[type="color"] {
+  width: 52px;
+  height: 32px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-input);
+  padding: 2px;
   cursor: pointer;
-  transition: 0.3s;
-  box-sizing: border-box;
-  text-decoration: none;
-  display: inline-block;
+}
+.tema-botoes {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 24px;
 }
 
-.btn-limpar:hover {
-  background: #777;
-  color: var(--pokemon-yellow);
+/* ====================================================================
+   BARRA DE ADICIONAR (por nome/id) + AUTOCOMPLETE  — Coleção e Equipe
+   ==================================================================== */
+.add-bar {
+  display: flex;
+  gap: 10px;
+  max-width: 560px;
+  width: 95%;
+  margin: 0 auto 34px;
 }
+.add-input-wrap { position: relative; flex: 1; }
+.add-input-wrap input { width: 100%; }
 
-.auth-icon {
-  width: 88px;
-  margin-bottom: 14px;
-  filter: drop-shadow(0 0 16px rgba(255,235,59,0.6)) drop-shadow(0 4px 8px rgba(0,0,0,0.4));
-  animation: flutuar-icon 3s ease-in-out infinite;
-}
-
-@keyframes flutuar-icon {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50%       { transform: translateY(-8px) rotate(2deg); }
-}
-
-.auth-footer {
-  margin-top: 25px;
-  font-size: 11px;
-}
-
-/* --- AUTOCOMPLETE UNIFICADO (Para todas as páginas) --- */
-.autocomplete-items {
+.sugestoes {
   position: absolute;
-  z-index: 10002;
   top: 100%;
   left: 0;
   right: 0;
-  background-color: var(--autocomplete-bg);
-  border: 2px solid var(--pokemon-yellow);
+  background: var(--bg-elev);
+  border: 1px solid var(--border-color);
   border-top: none;
-  border-radius: 0 0 10px 10px;
-  box-sizing: border-box;
-  max-height: 200px;
+  border-radius: 0 0 6px 6px;
+  max-height: 250px;
   overflow-y: auto;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
 }
-
-.autocomplete-items:empty {
-  display: none;
-}
-
-.autocomplete-items div {
-  padding: 12px 15px;
-  cursor: pointer;
-  border-bottom: 1px solid var(--autocomplete-sep);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 13px;
-  color: var(--autocomplete-text);
-  transition: background 0.2s;
-  text-align: left;
-}
-
-.autocomplete-items div:last-child {
-  border-bottom: none;
-}
-
-.autocomplete-items div:hover {
-  background-color: rgba(255, 235, 59, 0.2);
-  color: var(--pokemon-yellow);
-}
-
-.autocomplete-icon {
-  width: 40px;
-  height: 40px;
-  image-rendering: pixelated;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-}
-
-/* -------------------------- PAINEL ADMINISTRATIVO (DASHBOARD) -------------------------- */
-.admin-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  width: 95%;
-  max-width: 1200px;
-  margin: 30px auto;
-}
-
-/* --- FILTROS DO ADMIN --- */
-.admin-filters {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-  background: var(--admin-filter-bg);
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid var(--neon-blue);
-}
-
-.admin-filters input,
-.admin-filters select {
-  flex: 1;
-  padding: 10px;
-  border-radius: 5px;
-  background: var(--admin-input-bg);
-  border: 1px solid var(--admin-input-border);
-  color: var(--input-color);
-}
-
-/* --- CARDS DE CONTROLE --- */
-.admin-card-control {
-  background: var(--glass-bg);
-  border: 2px solid var(--neon-blue);
-  border-radius: 15px;
-  padding: 25px;
-  text-align: left;
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
-  box-sizing: border-box; /* Ensure padding is included in width */
-  position: relative; /* Contain absolute children like autocomplete */
-}
-
-.admin-card-control h3 {
-  color: var(--neon-blue);
-  margin-bottom: 15px;
+.sugestoes:empty { display: none; }
+.sugestoes div {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 16px;
-}
-
-.admin-card-control .auth-form {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.admin-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  font-size: 13px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.admin-table th {
-  background: rgba(255, 235, 59, 0.1);
-  padding: 12px;
-  color: var(--pokemon-yellow);
-  text-align: left;
-  border-bottom: 2px solid var(--pokemon-yellow);
-}
-
-.admin-table td {
-  padding: 12px;
-  border-bottom: 1px solid var(--table-border);
-}
-
-.badge-user {
-  background: #4caf50;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 10px;
-  font-weight: bold;
-}
-
-.badge-admin {
-  background: var(--primary-red);
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 10px;
-  font-weight: bold;
-}
-
-/* --- CLASSES GLOBAIS DE MODAL --- */
-.hidden {
-  display: none !important;
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 20000; /* Garante que fique acima do menu e de tudo */
-  backdrop-filter: blur(8px);
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* --- MODAL DE CONFIRMAÇÃO DE EXCLUSÃO --- */
-.modal-confirm {
-  background: var(--glass-bg);
-  border: 4px solid var(--primary-red);
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  max-width: 350px;
-  width: 90%;
-  box-shadow: 0 0 20px rgba(198, 40, 40, 0.5);
-  backdrop-filter: blur(15px);
-}
-
-.modal-confirm h2 {
-  color: var(--primary-red);
-  text-shadow: none;
-  font-size: 20px;
-  margin-top: 0;
-}
-
-.modal-confirm p {
-  margin-bottom: 25px;
-  font-weight: bold;
-}
-
-.btn-group-modal {
-  display: flex;
-  gap: 10px;
-}
-
-.btn-cancelar {
-  background: #555;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* -------------------------- FIM ESTILOS DE AUTENTICAÇÃO -------------------------- */
-
-/* -------------------------- PERFIL DO USUÁRIO -------------------------- */
-.perfil-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(14px);
-  border: 2px solid rgba(255, 235, 59, 0.3);
-  border-radius: 22px;
-  overflow: hidden;
-  width: 95%;
-  max-width: 780px;
-  box-shadow: 0 0 40px rgba(0,0,0,0.45);
-  animation: fadeIn 0.45s ease-out;
-  margin-bottom: 60px;
-}
-
-.perfil-card::before {
-  content: '';
-  display: block;
-  height: 6px;
-  background: linear-gradient(90deg, #c62828 0%, #ffeb3b 50%, #c62828 100%);
-}
-
-.perfil-body {
-  display: flex;
-  gap: 0;
-  flex-wrap: wrap;
-}
-
-/* Coluna esquerda: avatar */
-.perfil-avatar-col {
-  width: 220px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 36px 24px 32px;
-  background: rgba(0,0,0,0.25);
-  border-right: 1px solid rgba(255,255,255,0.08);
-  gap: 14px;
-}
-
-.perfil-avatar-wrap {
-  position: relative;
+  padding: 9px 12px;
   cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-color);
 }
+.sugestoes div:last-child { border-bottom: none; }
+.sugestoes div:hover { background: var(--bg-input); color: var(--primary); }
+.sugestoes div img { width: 32px; height: 32px; object-fit: contain; }
+.sugestoes .sug-num { color: var(--text-faint); font-family: monospace; font-size: 0.72rem; margin-left: auto; }
 
-.perfil-avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  border: 4px solid var(--pokemon-yellow);
-  object-fit: cover;
-  box-shadow: 0 0 20px rgba(255,235,59,0.35);
-  display: block;
-  transition: opacity 0.2s;
-}
-
-.perfil-avatar-wrap:hover .perfil-avatar { opacity: 0.7; }
-
-.perfil-avatar-edit-label {
+/* Botão X de remover no canto do card */
+.card-remover {
   position: absolute;
-  bottom: 2px;
-  right: 2px;
-  background: var(--pokemon-yellow);
-  color: #000;
-  width: 28px;
-  height: 28px;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  border: 2px solid #000;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-  transition: transform 0.2s;
+  transition: all var(--transition);
 }
-.perfil-avatar-wrap:hover .perfil-avatar-edit-label { transform: scale(1.15); }
+.card-remover:hover { border-color: var(--danger); color: var(--danger); background: rgba(239, 68, 68, 0.15); }
 
-.perfil-user-nome {
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
+.lista-vazia {
+  color: var(--text-muted);
   text-align: center;
-  word-break: break-word;
-  margin: 0;
+  width: 100%;
+  padding: 40px 20px;
+  grid-column: 1 / -1;
 }
-
-.perfil-user-email {
-  font-size: 10px;
-  color: rgba(255,255,255,0.45);
-  text-align: center;
-  word-break: break-word;
-  margin: 0;
-}
-
-/* Coluna direita: form */
-.perfil-form-col {
-  flex: 1;
-  min-width: 280px;
-  padding: 36px 36px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.perfil-form-col h2 {
-  font-size: 14px;
-  color: var(--pokemon-yellow);
-  text-shadow: 1px 1px #c62828;
-  text-align: left;
-  margin: 0 0 4px;
-}
-
-/* Responsivo perfil */
-@media (max-width: 600px) {
-  .perfil-avatar-col {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding: 28px 20px 20px;
-  }
-  .perfil-form-col { padding: 24px 20px 28px; }
-}
-
-/* Admin table rows hover */
-.admin-table tbody tr {
-  transition: background 0.15s;
-}
-.admin-table tbody tr:hover {
-  background: rgba(255,235,59,0.05);
-}
-
-/* Admin stat cards (top metrics) - override inline styles */
-.admin-stat-card {
-  text-align: center;
-  border-color: var(--neon-blue);
-}
-.admin-stat-card h2 {
-  margin: 0;
-  color: #fff;
-  text-shadow: none;
-  font-size: 2rem;
-}
-.admin-stat-card p {
-  font-weight: bold;
-  margin: 4px 0 0;
-}
-/* -------------------------- FIM PERFIL -------------------------- */

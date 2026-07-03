@@ -1,0 +1,22 @@
+{
+  "name": "pokemania-supremacia-do-protesto",
+  "version": "1.0.0",
+  "description": "Site estático dos Pokémon criados pelo mestre do RPG Supremacia do Protesto. Pokédex com mecânica de descoberta (importar/exportar), dados em localStorage, sem servidor nem banco.",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server",
+    "dev": "live-server --port=5500"
+  },
+  "keywords": [
+    "pokemon",
+    "rpg",
+    "vanilla-js",
+    "localstorage",
+    "static-site",
+    "github-pages"
+  ],
+  "author": "Pedro",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

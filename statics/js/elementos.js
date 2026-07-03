@@ -19,8 +19,13 @@
         vida:            { nome: 'Vida',            cor: '#00cc44', cor2: '#7fff00' },
         luz:             { nome: 'Luz',             cor: '#ffd700', cor2: '#ffffff' },
 
-        // ── Subelementos ────────────────────────────────────────
+        // ── Subelementos dos Principais ────────────────────────────────────────
         fogo_verdadeiro: { nome: 'Fogo Verdadeiro', cor: '#fff7d4', cor2: '#ffd700' },
+        agua_verdadeira: { nome: 'Água Verdadeira', cor: '#b8e0ff', cor2: '#00bfff' },
+        ar_verdadeiro:   { nome: 'Ar Verdadeiro',   cor: '#e0f4f8', cor2: '#ffffff' },
+        terra_verdadeira: { nome: 'Terra Verdadeira', cor: '#d2691e', cor2: '#8b4513' },
+
+        // ── Subelementos ────────────────────────────────────────
         fumaca:          { nome: 'Fumaça',          cor: '#8b7d8b', cor2: '#d0c0d0' },
         lava:            { nome: 'Lava',            cor: '#cc2900', cor2: '#ff6b00' },
         gelo:            { nome: 'Gelo',            cor: '#a8dce8', cor2: '#e0f4f8' },
@@ -42,9 +47,9 @@
      */
     window.RARIDADES = {
         comum:    { nome: 'Comum',    cor: '#9e9e9e', estrelas: '★'    },
-        raro:     { nome: 'Raro',     cor: '#2196f3', estrelas: '★★'   },
-        lendario: { nome: 'Lendário', cor: '#ffb300', estrelas: '★★★'  },
-        mitico:   { nome: 'Mítico',   cor: '#e040fb', estrelas: '★★★★' },
+        inicial:     { nome: 'Inicial',     cor: '#2196f3', estrelas: '★★'   },
+        mitico:   { nome: 'Místico',   cor: '#9c27b0', estrelas: '★★★' },
+        lendario: { nome: 'Lendário', cor: '#ffb300', estrelas: '★★★★'  },
     };
 
     // ── Helpers ─────────────────────────────────────────────────

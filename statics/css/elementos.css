@@ -1,0 +1,193 @@
+/* ===== PÁGINA ELEMENTOS ===== */
+#elementos-view { width: 100%; max-width: 1100px; }
+
+/* Orbe colorido do elemento */
+.el-orb {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--c2), var(--c1));
+  box-shadow: 0 0 6px var(--c1);
+  flex-shrink: 0;
+}
+.el-orb-lg { width: 36px; height: 36px; box-shadow: 0 0 16px var(--c1); }
+
+/* Legenda */
+.legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+.leg-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+.leg-cor {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+/* Seletor de elementos */
+.el-seletor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+.el-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 7px 13px;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.el-chip:hover { border-color: var(--primary); color: var(--text-main); }
+.el-chip.ativo {
+  border-color: var(--primary);
+  color: var(--text-main);
+  background: var(--bg-elev);
+  box-shadow: 0 0 12px var(--primary-glow);
+}
+
+/* Painel de fortes/fracos */
+.painel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-top: 3px solid var(--primary);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 34px;
+}
+.painel-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.painel-head h2 {
+  font-family: var(--font-heading);
+  text-align: left;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+.painel-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+.meta-item { font-size: 0.82rem; color: var(--text-muted); }
+.meta-item b { color: var(--text-main); }
+.meta-nota {
+  font-size: 0.78rem;
+  color: var(--secondary);
+  font-style: italic;
+}
+.painel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.bloco-tit {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+  margin-bottom: 6px;
+}
+.painel-bloco h3 {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin: 16px 0 8px;
+  font-weight: 600;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.el-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-left-width: 3px;
+  color: var(--text-main);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+.el-tag:hover { transform: translateY(-2px); }
+.el-tag b { font-size: 0.74rem; }
+.vazio-mini { color: var(--text-faint); font-size: 0.78rem; font-style: italic; }
+
+/* Matriz completa */
+.matriz-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-card);
+  padding: 6px;
+}
+.matriz {
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-size: 0.72rem;
+}
+.matriz th, .matriz td {
+  border: 1px solid var(--bg-main);
+  text-align: center;
+}
+.matriz td {
+  width: 38px;
+  height: 34px;
+  font-weight: 700;
+  color: var(--text-faint);
+}
+.matriz thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg-elev);
+  padding: 8px 4px;
+  vertical-align: bottom;
+}
+.matriz tbody th {
+  background: var(--bg-elev);
+  padding: 4px 10px 4px 8px;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.matriz thead th { cursor: pointer; }
+.matriz th .el-orb { vertical-align: middle; margin-right: 5px; }
+.matriz thead .th-nome {
+  display: inline-block;
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+.matriz tbody .th-nome { font-size: 0.7rem; color: var(--text-main); }
+.matriz .canto { color: var(--text-faint); font-weight: 600; font-size: 0.66rem; }
+.matriz th:hover .th-nome { color: var(--primary); }
+.matriz th.sel .th-nome { color: var(--primary); }
+.matriz td.cel.sel { outline: 2px solid var(--primary); outline-offset: -2px; }
+
+@media (max-width: 720px) {
+  .painel-grid { grid-template-columns: 1fr; gap: 18px; }
+}

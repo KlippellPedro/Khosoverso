@@ -1,0 +1,24 @@
+{
+  "_comentario": "Catálogo de itens do mestre. O jogador controla as quantidades no Inventário (salvas no progresso). 'icone' aponta para statics/uploads/itens/<arquivo>. Categorias definem a cor.",
+  "versao": "1.0",
+  "categorias": {
+    "cura":     { "nome": "Cura",      "cor": "#4ade80" },
+    "reviver":  { "nome": "Reviver",   "cor": "#f59e0b" },
+    "captura":  { "nome": "Captura",   "cor": "#457b9d" },
+    "evolucao": { "nome": "Evolução",  "cor": "#9c27b0" },
+    "batalha":  { "nome": "Batalha",   "cor": "#ef4444" },
+    "reforco":  { "nome": "Reforço",   "cor": "#22d3ee" },
+    "chave":    { "nome": "Chave",     "cor": "#eab308" }
+  },
+  "itens": [
+    { "id": 1, "nome": "Poção I",          "categoria": "cura",     "raridade": "comum",    "icone": "pocao.svg",   "descricao": "Recupera parte da vida de um Khosō ferido." },
+    { "id": 2, "nome": "Poção II",    "categoria": "cura",     "raridade": "raro",     "icone": "pocao.svg",   "descricao": "Recupera uma grande quantidade de vida." },
+    { "id": 3, "nome": "Antídoto",       "categoria": "cura",     "raridade": "comum",    "icone": "pocao.svg",   "descricao": "Cura doenças, veneno e outras condições." },
+    { "id": 4, "nome": "Revive",        "categoria": "reviver",  "raridade": "raro",     "icone": "reviver.svg", "descricao": "Traz de volta um Khosō desmaiado com metade da vida." },
+    { "id": 5, "nome": "Khosōbola",      "categoria": "captura",  "raridade": "comum",    "icone": "bola.svg",    "descricao": "Usada para capturar Khosōs selvagens." },
+    { "id": 6, "nome": "Pedra Elemental","categoria": "evolucao", "raridade": "raro",     "icone": "pedra.svg",   "descricao": "Força a evolução de certos Khosōs. Mal vista pelos cientistas: o Khosō perde os movimentos que aprenderia." },
+    { "id": 7, "nome": "Amuleto de Vida",   "categoria": "reforco",  "raridade": "raro",     "icone": "reforco.svg", "descricao": "Equipado a um Khosō, aumenta a vida máxima dele.", "efeito": { "stat": "vida", "valor": 25 } },
+    { "id": 8, "nome": "Amuleto de Força","categoria": "reforco","raridade": "raro",     "icone": "reforco.svg", "descricao": "Equipado a um Khosō, aumenta o ataque físico.", "efeito": { "stat": "ataque_f", "valor": 15 } },
+    { "id": 9, "nome": "Amuleto de Magia",     "categoria": "reforco",  "raridade": "raro",     "icone": "reforco.svg", "descricao": "Equipado a um Khosō, aumenta o ataque mágico.", "efeito": { "stat": "ataque_m", "valor": 15 } }
+  ]
+}

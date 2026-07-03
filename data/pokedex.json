@@ -3,30 +3,35 @@
   "pokemons": [
     {
       "numero": 1,
-      "nome": "Charizard X",
-      "imagem": "charizard-x.png",
-      "elementos": ["fogo", "escuridao"],
-      "raridade": "lendario",
-      "descricao": "EXEMPLO — substitua pelos Pokémon do mestre. Um dragão envolto em chamas negras.",
-      "stats": { "vida": 78, "ataque": 130, "defesa": 111, "velocidade": 100 }
+      "nome": "fogo_teste",
+      "geracao": 1,
+      "imagem": "ignavor.svg",
+      "elementos": ["fogo", "lava"],
+      "raridade": "inicial",
+      "descricao": "Uma serpente de magma que desperta nas profundezas vulcânicas.",
+      "stats": { "vida": 70, "ataque_m": 92, "ataque_f": 92, "defesa_m": 55, "defesa_f": 55, "speed": 78 },
+      "evolui_para": [{ "numero": 2, "condicao": "Nível 16" }]
     },
     {
       "numero": 2,
-      "nome": "Rayquaza Mega",
-      "imagem": "Rayquaza-mega.webp",
-      "elementos": ["ar", "raio"],
+      "nome": "raio_teste",
+      "geracao": 1,
+      "imagem": "velkrin.svg",
+      "elementos": ["escuridao", "raio"],
       "raridade": "lendario",
-      "descricao": "EXEMPLO — substitua pelos Pokémon do mestre. Serpente dos céus que comanda as tempestades.",
-      "stats": { "vida": 105, "ataque": 180, "defesa": 100, "velocidade": 115 }
+      "descricao": "Um predador das sombras tecido em relâmpagos negros.",
+      "stats": { "vida": 88, "ataque_m": 120, "ataque_f": 120, "defesa_m": 70, "defesa_f": 70, "speed": 135 },
+      "evolui_de": 1
     },
     {
       "numero": 3,
-      "nome": "Exemplo Comum",
+      "nome": "ar_teste",
+      "geracao": 2,
       "imagem": "",
-      "elementos": ["agua"],
+      "elementos": ["ar"],
       "raridade": "comum",
-      "descricao": "EXEMPLO de um Pokémon comum, ainda sem imagem. Use este formato para os mons do mestre.",
-      "stats": { "vida": 45, "ataque": 49, "defesa": 49, "velocidade": 45 }
+      "descricao": "Apenas um teste para ver o filtro de geração funcionar.",
+      "stats": { "vida": 50, "ataque_m": 50, "ataque_f": 50, "defesa_m": 50, "defesa_f": 50, "speed": 50 }
     }
   ]
 }

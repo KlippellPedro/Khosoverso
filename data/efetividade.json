@@ -1,0 +1,39 @@
+{
+  "_comentario": "Efetividade dos elementos (Tabela Elemental). matriz[ATACANTE][DEFENSOR] = multiplicador de dano; ausente = 1 (normal). 0 = imune, 0.25 = recebe 1/4 (-x4), 0.5 = recebe 1/2 (-x2), 2 = x2, 3 = x3, 4 = x4. ENERGIA é tratado à parte (x5 contra tudo, imune a tudo). 'derivado' = de qual elemento base ele vem. Reconciliado das 3 tabelas do mestre.",
+  "ordem": ["ar", "atm", "gas", "agua", "gelo", "sangue", "terra", "cristal", "metal", "fogo", "lava", "fumaca", "raio", "vida", "morte", "luz", "escuridao", "energia"],
+  "base": ["ar", "agua", "fogo", "terra", "raio", "vida", "luz"],
+  "derivado": {
+    "ar": "ar", "atm": "ar", "gas": "ar",
+    "agua": "agua", "gelo": "agua", "sangue": "agua",
+    "fogo": "fogo", "lava": "fogo", "fumaca": "fogo",
+    "terra": "terra", "cristal": "terra", "metal": "terra",
+    "raio": "raio",
+    "vida": "vida", "morte": "vida",
+    "luz": "luz", "escuridao": "luz",
+    "energia": "energia"
+  },
+  "notas": {
+    "cristal": "Também resiste a dano FÍSICO (recebe metade).",
+    "metal": "Também resiste a dano ELEMENTAL (recebe metade).",
+    "energia": "Elemento supremo (Máx: Raio + Tudo): forte contra TUDO (x5) e imune a TUDO."
+  },
+  "matriz": {
+    "ar":        { "fogo": 2, "atm": 0.5, "terra": 0.5, "cristal": 0.5 },
+    "atm":       { "fogo": 2, "lava": 2, "ar": 0, "atm": 0.5, "terra": 0.5, "cristal": 0.5, "gas": 0.5 },
+    "gas":       { "raio": 2, "ar": 0, "atm": 0.5, "terra": 0.5, "cristal": 0.5 },
+    "agua":      { "fogo": 2, "metal": 0.5 },
+    "gelo":      { "terra": 2, "cristal": 2, "sangue": 0, "metal": 0.5 },
+    "sangue":    { "vida": 3, "gelo": 0, "metal": 0.5, "morte": 0.5 },
+    "terra":     { "terra": 0, "lava": 0.5 },
+    "cristal":   { "metal": 2 },
+    "metal":     { "cristal": 2 },
+    "fogo":      { "gelo": 2, "terra": 2 },
+    "lava":      { "metal": 2, "fumaca": 0.5 },
+    "fumaca":    { "atm": 3, "sangue": 2, "terra": 2, "ar": 0.5, "gas": 0.5 },
+    "raio":      { "agua": 2, "sangue": 2, "atm": 2, "fumaca": 2 },
+    "vida":      { "escuridao": 4, "luz": 0.25, "morte": 0.5 },
+    "morte":     { "vida": 4 },
+    "luz":       { "morte": 4, "escuridao": 0.5, "vida": 0.25 },
+    "escuridao": { "luz": 4 }
+  }
+}

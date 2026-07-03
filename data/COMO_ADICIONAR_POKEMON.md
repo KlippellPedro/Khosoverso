@@ -1,11 +1,10 @@
 # Como adicionar Pokémon (guia do Mestre)
 
-Este projeto **não usa a PokéAPI**. Todos os Pokémon são criados pelo mestre e ficam
-guardados aqui na pasta `data/`. Há dois arquivos importantes:
+Todos os Pokémon são criados pelo mestre e ficam guardados aqui na pasta `data/`. Há dois arquivos importantes:
 
-| Arquivo | Para que serve | Quem mexe |
-|---|---|---|
-| `pokedex.json` | **Catálogo completo** — TODOS os Pokémon do mundo do RPG. | Mestre (com a ajuda do dev) |
+| Arquivo          | Para que serve                                                        | Quem mexe                      |
+| ---------------- | --------------------------------------------------------------------- | ------------------------------ |
+| `pokedex.json`   | **Catálogo completo** — TODOS os Pokémon do mundo do RPG.             |
 | `liberados.json` | Lista do que já foi **descoberto** e pode ser revelado aos jogadores. | Mestre distribui aos jogadores |
 
 ---
@@ -18,11 +17,12 @@ Cada Pokémon é um objeto dentro da lista `"pokemons"`. Modelo:
 {
   "numero": 4,
   "nome": "Nome do Pokémon",
-  "imagem": "nome-do-arquivo.png",
+  "geracao": 1,
+  "imagem": "nome-do-arquivo.png, .webp, .jpg ou .gif ou etc.",
   "elementos": ["fogo"],
   "raridade": "comum",
   "descricao": "A lore/descrição que aparece no card.",
-  "stats": { "vida": 50, "ataque": 55, "defesa": 40, "velocidade": 60 }
+  "stats": { "vida": 50, "ataque_m": 55, "ataque_f": 55, "defesa_m": 40, "defesa_f": 40, "speed": 60 }
 }
 ```
 
@@ -31,27 +31,28 @@ Cada Pokémon é um objeto dentro da lista `"pokemons"`. Modelo:
 - **numero** — número único e crescente (igual ao "Nº" da Pokédex).
 - **nome** — nome que aparece no card.
 - **imagem** — nome do arquivo de imagem. Coloque a imagem em
-  `statics/uploads/pokemon/`. Pode ser `.png`, `.webp`, `.jpg` ou `.gif`.
+  `statics/uploads/pokemon/gen`. Pode ser `.png`, `.webp`, `.jpg` ou `.gif`.
   Deixe `""` (vazio) se ainda não tiver imagem.
 - **elementos** — 1 ou 2 elementos (os "tipos"). Use as **chaves** da tabela abaixo.
-- **raridade** — `comum`, `raro`, `lendario` ou `mitico`.
+- **raridade** — `inicial`, `comum`, `mitico` ou `lendario`.
 - **descricao** — texto livre.
-- **stats** — quatro atributos de 0 a ~200: `vida`, `ataque`, `defesa`, `velocidade`.
+- **stats** — quatro atributos de 0 a ~200: `vida`, `ataque_m`, `ataque_f`, `defesa_m`, `defesa_f`, `speed`.
 
 ### Elementos disponíveis (use a CHAVE, não o nome)
 
-| Chave | Nome | | Chave | Nome |
-|---|---|---|---|---|
-| `fogo` | Fogo | | `gelo` | Gelo |
-| `agua` | Água | | `sangue` | Sangue |
-| `ar` | Ar | | `gas` | Gás |
-| `terra` | Terra | | `atm` | ATM |
-| `raio` | Raio | | `metal` | Metal |
-| `vida` | Vida | | `cristal` | Cristal |
-| `luz` | Luz | | `morte` | Morte |
-| `fogo_verdadeiro` | Fogo Verdadeiro | | `escuridao` | Escuridão |
-| `fumaca` | Fumaça | | `energia` | Energia |
-| `lava` | Lava | | | |
+| Chave              | Nome             |     | Chave       | Nome      |
+| ------------------ | ---------------- | --- | ----------- | --------- |
+| `fogo`             | Fogo             |     | `gelo`      | Gelo      |
+| `agua`             | Água             |     | `sangue`    | Sangue    |
+| `ar`               | Ar               |     | `gas`       | Gás       |
+| `terra`            | Terra            |     | `atm`       | ATM       |
+| `raio`             | Raio             |     | `metal`     | Metal     |
+| `vida`             | Vida             |     | `cristal`   | Cristal   |
+| `luz`              | Luz              |     | `morte`     | Morte     |
+| `fogo_verdadeiro`  | Fogo Verdadeiro  |     | `escuridao` | Escuridão |
+| `agua_verdadeira`  | Água Verdadeira  |     | `fumaca`    | Fumaça    |
+| `ar_verdadeiro`    | Ar Verdadeiro    |     | `lava`      | Lava      |
+| `terra_verdadeira` | Terra Verdadeira |     | `energia`   | Energia   |
 
 > A lista oficial fica em `statics/js/elementos.js`. Se quiser um elemento novo,
 > é só me avisar que eu adiciono lá (com cor e nome).

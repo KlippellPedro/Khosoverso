@@ -1,0 +1,45 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="vk-bg" cx="50%" cy="44%" r="58%">
+      <stop offset="0%" stop-color="#7a2fb0" stop-opacity="0.40"/>
+      <stop offset="55%" stop-color="#1a0033" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="vk-body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7a2fb0"/>
+      <stop offset="55%" stop-color="#440066"/>
+      <stop offset="100%" stop-color="#1a0033"/>
+    </linearGradient>
+    <filter id="vk-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="vk-arc" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="200" height="200" fill="url(#vk-bg)"/>
+
+  <!-- corpo predador -->
+  <path d="M100 178 C 56 168, 50 116, 98 108 C 144 100, 150 66, 110 58 C 84 52, 78 80, 104 88"
+        fill="none" stroke="url(#vk-body)" stroke-width="15" stroke-linecap="round" filter="url(#vk-glow)"/>
+
+  <!-- arcos elétricos -->
+  <path d="M70 150 L 82 138 L 76 132 L 90 120" fill="none" stroke="#00fff5" stroke-width="2" stroke-linecap="round" filter="url(#vk-arc)" opacity="0.9"/>
+  <path d="M134 96 L 124 86 L 130 80 L 120 70" fill="none" stroke="#00fff5" stroke-width="2" stroke-linecap="round" filter="url(#vk-arc)" opacity="0.85"/>
+
+  <!-- cabeça -->
+  <path d="M104 88 L 80 78 L 92 102 Z" fill="#440066" filter="url(#vk-glow)"/>
+  <!-- chifres -->
+  <path d="M108 56 L 112 38 L 118 54 Z" fill="#1a0033"/>
+  <path d="M118 58 L 126 44 L 128 60 Z" fill="#1a0033"/>
+  <!-- olho elétrico -->
+  <circle cx="92" cy="88" r="3" fill="#00fff5" filter="url(#vk-arc)"/>
+
+  <!-- faíscas -->
+  <circle cx="150" cy="150" r="2.2" fill="#00fff5" opacity="0.8"/>
+  <circle cx="56" cy="120" r="1.8" fill="#9a4fd0" opacity="0.7"/>
+  <circle cx="156" cy="100" r="2" fill="#00fff5" opacity="0.6"/>
+</svg>

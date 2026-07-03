@@ -1,0 +1,40 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="ig-bg" cx="50%" cy="44%" r="58%">
+      <stop offset="0%" stop-color="#ff6b00" stop-opacity="0.40"/>
+      <stop offset="55%" stop-color="#cc2900" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ig-body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd24d"/>
+      <stop offset="45%" stop-color="#ff6b00"/>
+      <stop offset="100%" stop-color="#cc2900"/>
+    </linearGradient>
+    <filter id="ig-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="200" height="200" fill="url(#ig-bg)"/>
+
+  <!-- corpo em espiral -->
+  <path d="M100 176 C 52 168, 46 118, 96 110 C 142 103, 150 70, 112 60 C 86 53, 80 80, 104 88"
+        fill="none" stroke="url(#ig-body)" stroke-width="15" stroke-linecap="round" filter="url(#ig-glow)"/>
+  <!-- brilho interno do corpo -->
+  <path d="M100 176 C 52 168, 46 118, 96 110 C 142 103, 150 70, 112 60 C 86 53, 80 80, 104 88"
+        fill="none" stroke="#fff2cc" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- cabeça -->
+  <path d="M104 88 L 80 80 L 92 102 Z" fill="#ffd24d" filter="url(#ig-glow)"/>
+  <!-- chifre -->
+  <path d="M112 58 L 118 40 L 124 56 Z" fill="#cc2900"/>
+  <!-- olho -->
+  <circle cx="93" cy="88" r="2.6" fill="#2a0a00"/>
+
+  <!-- brasas -->
+  <circle cx="150" cy="150" r="3" fill="#ffd24d" opacity="0.85"/>
+  <circle cx="60" cy="140" r="2" fill="#ff6b00" opacity="0.75"/>
+  <circle cx="158" cy="96" r="2.4" fill="#ffb300" opacity="0.7"/>
+  <circle cx="44" cy="108" r="1.8" fill="#ffd24d" opacity="0.6"/>
+</svg>
