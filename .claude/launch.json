@@ -2,13 +2,13 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "Pokemania Estatico",
+      "name": "Khosoverso Estatico",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "5500"],
-      "port": 5500
+      "runtimeArgs": ["-m", "http.server", "8743"],
+      "port": 8743
     },
     {
-      "name": "Pokemon Site",
+      "name": "Khosoverso Site",
       "runtimeExecutable": "python",
       "runtimeArgs": ["app.py"],
       "port": 5000

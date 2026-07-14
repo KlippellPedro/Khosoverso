@@ -232,7 +232,7 @@ select option { background: var(--bg-input); color: var(--text-main); }
 /* ====================================================================
    CONTAINER PADRÃO DE PÁGINA
    ==================================================================== */
-.pokedex-container {
+.khosodex-container {
   padding: 48px 20px 60px;
   display: flex;
   flex-direction: column;

@@ -18,7 +18,7 @@ function fmtNum(n) { return 'N.º ' + String(n).padStart(3, '0'); }
 
 function cardColecao(p) {
     const card = document.createElement('div');
-    card.className = 'pokemon-card revelado';
+    card.className = 'khoso-card revelado';
     card.style.position = 'relative';
     card.style.cursor = 'pointer';
     card.style.borderColor = elCor(p.elementos[0]);

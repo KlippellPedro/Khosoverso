@@ -1,21 +1,21 @@
 /**
- * POKEDEX.JS — Pokédex com mecânica de DESCOBERTA (estático).
+ * KHOSODEX.JS — Khosōdex com mecânica de DESCOBERTA (estático).
  *
- * Mostra todos os Pokémon do catálogo; os não descobertos ficam como card
+ * Mostra todos os Khosōs do catálogo; os não descobertos ficam como card
  * escuro/"?". O jogador importa o JSON de liberados que o mestre distribui
  * para revelar. A partir dos revelados, pode adicionar à Coleção.
  * (O backup geral do progresso fica no Exportar/Importar do menu.)
  */
 
-const grid = document.getElementById('pokedex-list');
-const inputBusca = document.getElementById('pokemon-input');
+const grid = document.getElementById('khosodex-list');
+const inputBusca = document.getElementById('khoso-input');
 const filtroEl = document.getElementById('filtro-elemento');
 const filtroGen = document.getElementById('filtro-geracao');
 const filtroRar = document.getElementById('filtro-raridade');
 const btnLimpar = document.getElementById('btn-limpar');
 const btnImport = document.getElementById('btn-importar');
 const inputFile = document.getElementById('import-file');
-const contador = document.getElementById('pokedex-contador');
+const contador = document.getElementById('khosodex-contador');
 
 let CATALOGO = [];
 let novos = []; // números recém-liberados (para animar)
@@ -56,7 +56,7 @@ function imagemDe(p) { return Catalogo.imagem(p); }
 
 function cardBloqueado(p) {
     const card = document.createElement('div');
-    card.className = 'pokemon-card bloqueado';
+    card.className = 'khoso-card bloqueado';
     card.innerHTML = `
         <div class="img-container"><span class="lock-interrogacao">?</span></div>
         <div class="info">
@@ -87,7 +87,7 @@ function adicionarParticulas(elemento, cor) {
 
 function cardRevelado(p) {
     const card = document.createElement('div');
-    card.className = 'pokemon-card revelado';
+    card.className = 'khoso-card revelado';
     card.style.cursor = 'pointer';
     if (novos.includes(p.numero)) card.classList.add('revelar');
 
@@ -167,7 +167,7 @@ function render() {
     });
 
     if (!grid.children.length) {
-        grid.innerHTML = '<p class="pokedex-vazio">Nenhum Khosō encontrado.</p>';
+        grid.innerHTML = '<p class="khosodex-vazio">Nenhum Khosō encontrado.</p>';
     }
     atualizarContador();
 }
@@ -207,9 +207,10 @@ inputFile.addEventListener('change', ev => {
             const antes = new Set(Catalogo.getDescobertos());
             Catalogo.liberar(nums);
             novos = Catalogo.getDescobertos().filter(n => !antes.has(n));
+            const qtdNovos = novos.length;
             render();
             novos = [];
-            notificar(`${novos.length || nums.length} Khosōs liberados.`, 'ok');
+            notificar(`${qtdNovos || nums.length} Khosōs liberados.`, 'ok');
         } catch (err) {
             notificar('Arquivo inválido. Use o JSON de liberados do mestre.', 'erro');
         }

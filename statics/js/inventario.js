@@ -58,7 +58,7 @@
         const cards = lista.map(cardItem).join('') || '<p class="lista-vazia">Nenhum item nesta categoria.</p>';
 
         cont.innerHTML = `
-            <p class="pokedex-contador"><b>${totalUnid}</b> itens &middot; ${totalTipos} tipos diferentes</p>
+            <p class="khosodex-contador"><b>${totalUnid}</b> itens &middot; ${totalTipos} tipos diferentes</p>
             <p class="inv-dica">Use − e + ou digite a quantidade que você tem de cada item.</p>
             <div class="inv-filtros">${chips}</div>
             <div class="inv-grid">${cards}</div>`;

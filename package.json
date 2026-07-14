@@ -1,14 +1,14 @@
 {
-  "name": "pokemania-supremacia-do-protesto",
+  "name": "khosoverso-supremacia-do-protesto",
   "version": "1.0.0",
-  "description": "Site estático dos Pokémon criados pelo mestre do RPG Supremacia do Protesto. Pokédex com mecânica de descoberta (importar/exportar), dados em localStorage, sem servidor nem banco.",
+  "description": "Site estático dos Khosōs criados pelo mestre do RPG Supremacia do Protesto. Khosōdex com mecânica de descoberta (importar/exportar), dados em localStorage, sem servidor nem banco.",
   "main": "index.html",
   "scripts": {
     "start": "live-server",
     "dev": "live-server --port=5500"
   },
   "keywords": [
-    "pokemon",
+    "khosoverso",
     "rpg",
     "vanilla-js",
     "localstorage",

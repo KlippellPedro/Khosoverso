@@ -13,7 +13,7 @@
 
     const paginas = [
         { label: 'Início', href: homePrefix + 'index.html' },
-        { label: 'Khosōdex', href: prefix + 'pokedex.html' },
+        { label: 'Khosōdex', href: prefix + 'khosodex.html' },
         { label: 'Elementos', href: prefix + 'elementos.html' },
         { label: 'Equipe', href: prefix + 'equipe.html' },
         { label: 'Coleção', href: prefix + 'colecao.html' },
@@ -21,7 +21,7 @@
         { label: 'Social', href: prefix + 'social.html' },
     ];
 
-    // Pega o nome do arquivo atual (ex: pokedex.html)
+    // Pega o nome do arquivo atual (ex: khosodex.html)
     const pathParts = pathname.split('/');
     const atual = (pathParts[pathParts.length - 1] || 'index.html').toLowerCase();
 

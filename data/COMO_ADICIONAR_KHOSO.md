@@ -1,22 +1,22 @@
-# Como adicionar Pokémon (guia do Mestre)
+# Como adicionar Khosō (guia do Mestre)
 
-Todos os Pokémon são criados pelo mestre e ficam guardados aqui na pasta `data/`. Há dois arquivos importantes:
+Todos os Khosōs são criados pelo mestre e ficam guardados aqui na pasta `data/`. Há dois arquivos importantes:
 
-| Arquivo          | Para que serve                                                        | Quem mexe                      |
-| ---------------- | --------------------------------------------------------------------- | ------------------------------ |
-| `pokedex.json`   | **Catálogo completo** — TODOS os Pokémon do mundo do RPG.             |
+| Arquivo           | Para que serve                                                        | Quem mexe                      |
+| ------------------ | --------------------------------------------------------------------- | ------------------------------ |
+| `khosodex.json`   | **Catálogo completo** — TODOS os Khosōs do mundo do RPG.              |
 | `liberados.json` | Lista do que já foi **descoberto** e pode ser revelado aos jogadores. | Mestre distribui aos jogadores |
 
 ---
 
-## 1. Cadastrar um Pokémon no catálogo (`pokedex.json`)
+## 1. Cadastrar um Khosō no catálogo (`khosodex.json`)
 
-Cada Pokémon é um objeto dentro da lista `"pokemons"`. Modelo:
+Cada Khosō é um objeto dentro da lista `"khosos"`. Modelo:
 
 ```json
 {
   "numero": 4,
-  "nome": "Nome do Pokémon",
+  "nome": "Nome do Khosō",
   "geracao": 1,
   "imagem": "nome-do-arquivo.png, .webp, .jpg ou .gif ou etc.",
   "elementos": ["fogo"],
@@ -28,10 +28,10 @@ Cada Pokémon é um objeto dentro da lista `"pokemons"`. Modelo:
 
 ### Campos
 
-- **numero** — número único e crescente (igual ao "Nº" da Pokédex).
+- **numero** — número único e crescente (igual ao "Nº" da Khosōdex).
 - **nome** — nome que aparece no card.
 - **imagem** — nome do arquivo de imagem. Coloque a imagem em
-  `statics/uploads/pokemon/gen`. Pode ser `.png`, `.webp`, `.jpg` ou `.gif`.
+  `statics/uploads/khoso/gen`. Pode ser `.png`, `.webp`, `.jpg` ou `.gif`.
   Deixe `""` (vazio) se ainda não tiver imagem.
 - **elementos** — 1 ou 2 elementos (os "tipos"). Use as **chaves** da tabela abaixo.
 - **raridade** — `inicial`, `comum`, `mitico` ou `lendario`.
@@ -59,22 +59,22 @@ Cada Pokémon é um objeto dentro da lista `"pokemons"`. Modelo:
 
 ---
 
-## 2. Liberar Pokémon para os jogadores (`liberados.json`)
+## 2. Liberar Khosōs para os jogadores (`liberados.json`)
 
-A Pokédex mostra **todos** os Pokémon do catálogo, mas como **cards escuros/bloqueados**
+A Khosōdex mostra **todos** os Khosōs do catálogo, mas como **cards escuros/bloqueados**
 ("???") até serem descobertos. Para revelar, o mestre distribui um `liberados.json`
-e cada jogador **importa** esse arquivo na página da Pokédex (botão **Importar**).
+e cada jogador **importa** esse arquivo na página da Khosōdex (botão **Importar**).
 
 Formato:
 
 ```json
 {
-  "tipo": "pokemania-liberados",
+  "tipo": "khosoverso-liberados",
   "liberados": [1, 2, 5, 8]
 }
 ```
 
-Basta listar os **números** dos Pokémon que devem ficar visíveis. Veja
+Basta listar os **números** dos Khosōs que devem ficar visíveis. Veja
 `liberados.exemplo.json` como modelo. Cada jogador também pode **Exportar** o que já
 tem liberado (backup), igual ao importar/exportar da Ficha de RPG.
 
@@ -82,6 +82,6 @@ tem liberado (backup), igual ao importar/exportar da Ficha de RPG.
 
 ## Resumo do fluxo
 
-1. Mestre pensa nos Pokémon → preenche `pokedex.json` + coloca as imagens.
+1. Mestre pensa nos Khosōs → preenche `khosodex.json` + coloca as imagens.
 2. Conforme os jogadores descobrem mons no RPG, o mestre manda um `liberados.json`.
-3. Cada jogador importa o arquivo na Pokédex → os mons liberados deixam de ser "???".
+3. Cada jogador importa o arquivo na Khosōdex → os mons liberados deixam de ser "???".

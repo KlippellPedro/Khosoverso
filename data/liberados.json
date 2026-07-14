@@ -1,5 +1,5 @@
 {
-  "tipo": "pokemania-liberados",
-  "descricao": "Arquivo que o MESTRE distribui aos jogadores para liberar Pokémon na Pokédex. O jogador importa este arquivo na página da Pokédex (botão Importar). Só os números listados aqui ficam revelados; o resto permanece como card escuro/bloqueado.",
+  "tipo": "khosoverso-liberados",
+  "descricao": "Arquivo que o MESTRE distribui aos jogadores para liberar Khosōs na Khosōdex. O jogador importa este arquivo na página da Khosōdex (botão Importar). Só os números listados aqui ficam revelados; o resto permanece como card escuro/bloqueado.",
   "liberados": [1, 2, 3]
 }

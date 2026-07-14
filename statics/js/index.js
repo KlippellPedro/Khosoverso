@@ -1,6 +1,6 @@
 /**
  * INDEX.JS — Lógica da página inicial (Início).
- * Mostra estatísticas e um Pokémon de destaque entre os já descobertos.
+ * Mostra estatísticas e um Khosō de destaque entre os já descobertos.
  * Roda sempre na raiz, então as sub-páginas ficam em 'templates/'.
  */
 Catalogo.carregar().then(lista => {
@@ -15,7 +15,7 @@ Catalogo.carregar().then(lista => {
     if (!descobertos.length) {
         box.innerHTML =
             '<p class="destaque-desc">Você ainda não descobriu nenhum Khosō. ' +
-            'Vá até a <a href="templates/pokedex.html" style="color:var(--primary)">Khosōdex</a> ' +
+            'Vá até a <a href="templates/khosodex.html" style="color:var(--primary)">Khosōdex</a> ' +
             'e importe o arquivo de liberados que o mestre te enviar.</p>';
         return;
     }
@@ -34,7 +34,7 @@ Catalogo.carregar().then(lista => {
         `<div class="destaque-nome">${p.nome}</div>` +
         `<div class="destaque-badges">${badges}</div>` +
         `<p class="destaque-desc">${p.descricao || ''}</p>` +
-        `<a class="cta" href="templates/pokedex.html">Ver Khosōdex →</a>`;
+        `<a class="cta" href="templates/khosodex.html">Ver Khosōdex →</a>`;
 });
 
 // Mini-estatísticas: distribuição dos descobertos por raridade e elemento

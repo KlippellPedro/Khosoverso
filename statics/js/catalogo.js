@@ -1,7 +1,7 @@
 /**
- * CATALOGO.JS — Camada de dados do Pokémania (estático, sem servidor).
+ * CATALOGO.JS — Camada de dados do Khosoverso (estático, sem servidor).
  *
- * - Catálogo dos Pokémon: lido de data/pokedex.json (conteúdo do mestre).
+ * - Catálogo dos Khosōs: lido de data/khosodex.json (conteúdo do mestre).
  * - Estado do jogador (descobertos, coleção, equipe, perfil): localStorage.
  *
  * Funciona em hospedagem estática (GitHub Pages), sem banco de dados.
@@ -13,16 +13,28 @@
     const BASE = (pathname.includes('/templates/') || pathname.endsWith('/templates')) ? '../' : '';
 
     const LS = {
-        descobertos: 'pokemania_descobertos', // [numero, ...] revelados via importação
-        colecao: 'pokemania_colecao',     // [numero, ...] capturados pelo jogador
-        equipe: 'pokemania_equipe',       // [numero, ...] (máx. 6)
-        inventario: 'pokemania_inventario', // { itemId: quantidade }
-        equipados: 'pokemania_equipados', // { numero: [itemId, ...] } itens de reforço
-        hp: 'pokemania_hp',               // { numero: vidaAtual }
-        khoso: 'pokemania_khoso',         // { numero: { apelido, nota } }
-        ataques: 'pokemania_ataques',     // { numero: [{ nome, elemento, tipo, descricao }] }
-        perfil: 'pokemania_perfil',       // { nome, avatar }
+        descobertos: 'khosoverso_descobertos', // [numero, ...] revelados via importação
+        colecao: 'khosoverso_colecao',     // [numero, ...] capturados pelo jogador
+        equipe: 'khosoverso_equipe',       // [numero, ...] (máx. 6)
+        inventario: 'khosoverso_inventario', // { itemId: quantidade }
+        equipados: 'khosoverso_equipados', // { numero: [itemId, ...] } itens de reforço
+        hp: 'khosoverso_hp',               // { numero: vidaAtual }
+        khoso: 'khosoverso_khoso',         // { numero: { apelido, nota } }
+        ataques: 'khosoverso_ataques',     // { numero: [{ nome, elemento, tipo, descricao }] }
+        perfil: 'khosoverso_perfil',       // { nome, avatar }
     };
+
+    // Migração única das chaves antigas ("pokemania_*"), da época em que o
+    // site se chamava Pokémania — preserva o progresso salvo de quem já jogava.
+    (function migrarChavesAntigas() {
+        Object.keys(LS).forEach(k => {
+            const antiga = LS[k].replace('khosoverso_', 'pokemania_');
+            if (localStorage.getItem(LS[k]) === null && localStorage.getItem(antiga) !== null) {
+                localStorage.setItem(LS[k], localStorage.getItem(antiga));
+                localStorage.removeItem(antiga);
+            }
+        });
+    })();
 
     function _get(key, fallback) {
         try {
@@ -36,10 +48,10 @@
     let _catalogoPromise = null;
     function carregar() {
         if (!_catalogoPromise) {
-            _catalogoPromise = fetch(BASE + 'data/pokedex.json')
+            _catalogoPromise = fetch(BASE + 'data/khosodex.json')
                 .then(r => r.json())
-                .then(d => d.pokemons || [])
-                .catch(e => { console.error('Erro ao carregar data/pokedex.json:', e); return []; });
+                .then(d => d.khosos || [])
+                .catch(e => { console.error('Erro ao carregar data/khosodex.json:', e); return []; });
         }
         return _catalogoPromise;
     }
@@ -49,7 +61,7 @@
         carregar,
         porNumero(lista, n) { return lista.find(p => p.numero === n); },
 
-        // Filtra uma lista de Pokémon por geração
+        // Filtra uma lista de Khosōs por geração
         filtrarPorGeracao(lista, gen) {
             if (!gen || gen === 'todas') return lista;
             return lista.filter(p => String(p.geracao || 1) === String(gen));
@@ -61,9 +73,9 @@
             return [...new Set(gens)].sort((a, b) => a - b);
         },
 
-        // Caminho da imagem de um Pokémon (com fallback para a pokébola)
+        // Caminho da imagem de um Khosō (com fallback para a pokébola)
         imagem(p) {
-            if (!p || !p.imagem) return BASE + 'statics/uploads/utilidade/ultra-ball.png';
+            if (!p || !p.imagem) return BASE + 'statics/uploads/utilidade/khoso-ball.png';
             if (p.imagem.startsWith('http') || p.imagem.startsWith('data:')) return p.imagem;
 
             const pastaGen = p.geracao ? `gen_${p.geracao}` : 'gen_1';
@@ -74,7 +86,7 @@
                 arquivo += '.svg';
             }
 
-            return `${BASE}statics/uploads/pokemon/${pastaGen}/${arquivo}`;
+            return `${BASE}statics/uploads/khoso/${pastaGen}/${arquivo}`;
         },
 
         // ── Descobertos (revelados na Pokédex) ──────────────────
@@ -155,7 +167,7 @@
         // ── Save único de progresso (liberados + coleção + equipe) ──
         exportarProgresso() {
             const pacote = {
-                tipo: 'pokemania-progresso',
+                tipo: 'khosoverso-progresso',
                 exportadoEm: new Date().toLocaleString('pt-BR'),
                 descobertos: this.getDescobertos(),
                 colecao: this.getColecao(),
@@ -169,7 +181,7 @@
             const blob = new Blob([JSON.stringify(pacote, null, 2)], { type: 'application/json' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download = 'pokemania_progresso.json';
+            a.download = 'khosoverso_progresso.json';
             a.click();
             if (window.notificar) notificar('Progresso exportado.', 'ok');
         },
@@ -177,8 +189,9 @@
             try {
                 const d = JSON.parse(texto);
                 const temCampos = ('descobertos' in d) || ('colecao' in d) || ('equipe' in d);
-                if (d.tipo !== 'pokemania-progresso' && !temCampos) {
-                    return { ok: false, msg: 'Não é um arquivo de progresso do Pokémania.' };
+                const tipoValido = d.tipo === 'khosoverso-progresso' || d.tipo === 'pokemania-progresso'; // 'pokemania-progresso' = saves antigos, antes do rebrand
+                if (!tipoValido && !temCampos) {
+                    return { ok: false, msg: 'Não é um arquivo de progresso do Khosoverso.' };
                 }
                 if (Array.isArray(d.descobertos)) _set(LS.descobertos, d.descobertos.map(Number));
                 if (Array.isArray(d.colecao)) _set(LS.colecao, d.colecao.map(Number));

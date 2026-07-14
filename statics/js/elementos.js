@@ -1,11 +1,11 @@
 /**
- * ELEMENTOS.JS — Fonte única dos "tipos" do Pokémania.
+ * ELEMENTOS.JS — Fonte única dos "tipos" do Khosoverso.
  *
  * Os tipos são os ELEMENTOS do Avatar (Ficha de RPG). As cores (cor/cor2)
  * são exatamente as mesmas usadas na Ficha (ELEMENT_VISUAL do avatar_ui.js),
  * pra manter a identidade visual entre os dois projetos.
  *
- * Use sempre as CHAVES (ex: "fogo") nos dados dos Pokémon (data/pokedex.json).
+ * Use sempre as CHAVES (ex: "fogo") nos dados dos Khosōs (data/khosodex.json).
  * Pra exibir na tela, leia window.ELEMENTOS[chave].nome / .cor / .cor2.
  */
 (function () {

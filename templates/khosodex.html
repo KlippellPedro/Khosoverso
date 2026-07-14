@@ -3,30 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokémania - Khosōdex</title>
-    <link rel="shortcut icon" type="image/x-icon" href="../statics/uploads/utilidade/ultra-ball.png" />
+    <title>Khosoverso - Khosōdex</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../statics/uploads/utilidade/khoso-ball.png" />
     <script src="../statics/js/tema.js"></script>
     <link rel="stylesheet" type="text/css" href="../statics/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="../statics/css/estilo.css" />
-    <link rel="stylesheet" type="text/css" href="../statics/css/pokedex.css" />
+    <link rel="stylesheet" type="text/css" href="../statics/css/khosodex.css" />
   </head>
   <body>
     <div id="site-header"></div>
 
     <main>
-      <div class="pokedex-container">
+      <div class="khosodex-container">
         <h1>KHOSŌDEX</h1>
-        <p id="pokedex-contador" class="pokedex-contador">0 / 0 descobertos</p>
+        <p id="khosodex-contador" class="khosodex-contador">0 / 0 descobertos</p>
 
         <div class="busca-container">
           <!-- Importar o JSON de liberados que o mestre distribui -->
-          <div class="pokedex-acoes">
+          <div class="khosodex-acoes">
             <button id="btn-importar" class="btn-acao">Importar novos Khosōs descobertos</button>
           </div>
 
-          <input type="text" id="pokemon-input" placeholder="Pesquisar nome ou número (entre os descobertos)..." autocomplete="off" />
+          <input type="text" id="khoso-input" placeholder="Pesquisar nome ou número (entre os descobertos)..." autocomplete="off" />
 
-          <div class="pokedex-filtros">
+          <div class="khosodex-filtros">
             <div class="filtro-grupo">
               <select id="filtro-elemento" class="filtro-select">
                 <option value="">Todos os elementos</option>
@@ -42,7 +42,7 @@
           </div>
         </div>
 
-        <section id="pokedex-list" class="pokedex-grid"></section>
+        <section id="khosodex-list" class="khosodex-grid"></section>
       </div>
     </main>
 
@@ -51,6 +51,6 @@
     <script src="../statics/js/elementos.js"></script>
     <script src="../statics/js/catalogo.js"></script>
     <script src="../statics/js/menu.js"></script>
-    <script src="../statics/js/pokedex.js"></script>
+    <script src="../statics/js/khosodex.js"></script>
   </body>
 </html>

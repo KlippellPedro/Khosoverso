@@ -1,6 +1,6 @@
-/* ===== POKÉDEX ===== */
+/* ===== KHOSŌDEX ===== */
 
-.pokedex-contador {
+.khosodex-contador {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -11,7 +11,7 @@
   border-radius: 20px;
   margin: 4px 0 26px;
 }
-.pokedex-contador b { color: var(--primary); }
+.khosodex-contador b { color: var(--primary); }
 
 /* ===== BARRA DE BUSCA ===== */
 .busca-container {
@@ -25,7 +25,7 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
-.pokedex-acoes {
+.khosodex-acoes {
   display: flex;
   justify-content: center;
   margin-bottom: 16px;
@@ -50,9 +50,9 @@
   box-shadow: 0 0 14px var(--secondary-glow);
 }
 
-#pokemon-input { width: 100%; margin-bottom: 14px; }
+#khoso-input { width: 100%; margin-bottom: 14px; }
 
-.pokedex-filtros {
+.khosodex-filtros {
   padding-top: 14px;
   border-top: 1px solid var(--border-color);
 }
@@ -74,7 +74,7 @@
 .btn-limpar:hover { border-color: var(--primary); color: var(--primary); }
 
 /* ===== GRID ===== */
-.pokedex-grid {
+.khosodex-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 16px;
@@ -84,7 +84,7 @@
 }
 
 /* ===== CARD ===== */
-.pokemon-card {
+.khoso-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 10px;
@@ -94,10 +94,10 @@
   transition: transform var(--transition), box-shadow var(--transition);
   animation: fadeIn 0.35s both;
 }
-.pokemon-card.revelado { border-top-width: 3px; }
+.khoso-card.revelado { border-top-width: 3px; }
 
 /* Efeito holográfico (lendários) */
-.pokemon-card.holo::after {
+.khoso-card.holo::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -110,11 +110,11 @@
   opacity: 0;
   transition: opacity 0.3s;
 }
-.pokemon-card.holo:hover::after { opacity: 1; animation: holoSweep 1.3s ease; }
+.khoso-card.holo:hover::after { opacity: 1; animation: holoSweep 1.3s ease; }
 @keyframes holoSweep { from { background-position: 100% 100%; } to { background-position: 0% 0%; } }
 
 /* Animação de descoberta (ao importar liberados) */
-.pokemon-card.revelar { animation: revelarPop 0.7s cubic-bezier(0.2, 1.2, 0.3, 1) both, revelarGlow 1s ease both; }
+.khoso-card.revelar { animation: revelarPop 0.7s cubic-bezier(0.2, 1.2, 0.3, 1) both, revelarGlow 1s ease both; }
 @keyframes revelarPop {
   0% { transform: scale(0.55) rotateY(85deg); opacity: 0; }
   60% { transform: scale(1.07) rotateY(0); opacity: 1; }
@@ -125,7 +125,7 @@
   45% { box-shadow: 0 0 28px var(--primary), 0 0 10px #fff; }
   100% { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45); }
 }
-.pokemon-card.revelado:hover {
+.khoso-card.revelado:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.6);
 }
@@ -139,7 +139,7 @@
   min-height: 154px;
   position: relative;
 }
-.pokemon-card img {
+.khoso-card img {
   width: 124px;
   height: 124px;
   object-fit: contain;
@@ -201,17 +201,17 @@
 .btn-colecao.ativo:hover { border-color: var(--danger); color: var(--danger); background: rgba(239, 68, 68, 0.08); }
 
 /* ===== CARD BLOQUEADO ===== */
-.pokemon-card.bloqueado { opacity: 0.7; }
-.pokemon-card.bloqueado .img-container { background: #0d0d0f; }
+.khoso-card.bloqueado { opacity: 0.7; }
+.khoso-card.bloqueado .img-container { background: #0d0d0f; }
 .lock-interrogacao {
   font-family: var(--font-heading);
   font-size: 64px;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.07);
 }
-.pokemon-card.bloqueado:hover { opacity: 0.95; }
+.khoso-card.bloqueado:hover { opacity: 0.95; }
 
-.pokedex-vazio {
+.khosodex-vazio {
   color: var(--text-muted);
   text-align: center;
   width: 100%;
@@ -221,7 +221,7 @@
 
 /* ====================================================================
    ANIMAÇÕES COMPARTILHADAS (cards multi-elemento + partículas)
-   Usadas tanto na Pokédex quanto na página de detalhes.
+   Usadas tanto na Khosōdex quanto na página de detalhes.
    ==================================================================== */
 @keyframes borderRotate {
   0%   { background-position: 0% 50%; }

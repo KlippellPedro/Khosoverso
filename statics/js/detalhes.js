@@ -16,7 +16,7 @@
     const ITENS = itensData.itens || [];
     const REFORCOS = ITENS.filter(i => i.efeito);
 
-    document.title = `Pokémania - ${p.nome}`;
+    document.title = `Khosoverso - ${p.nome}`;
 
     const descobertos = Catalogo.getDescobertos();
     const navegavel = catalogo.filter(i => descobertos.includes(i.numero)).sort((a, b) => a.numero - b.numero);

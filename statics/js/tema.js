@@ -6,7 +6,12 @@
  * trocar de página ou dar F5. O botão de engrenagem no menu abre o modal.
  */
 (function () {
-    const LS = 'pokemania_tema';
+    const LS = 'khosoverso_tema';
+    const LS_ANTIGA = 'pokemania_tema'; // nome antigo do site, antes do rebrand para Khosoverso
+    if (localStorage.getItem(LS) === null && localStorage.getItem(LS_ANTIGA) !== null) {
+        localStorage.setItem(LS, localStorage.getItem(LS_ANTIGA));
+        localStorage.removeItem(LS_ANTIGA);
+    }
     const PADRAO = { primary: '#ff4444', secondary: '#457b9d' };
     const PRESETS = [
         { nome: 'Protesto',  primary: '#ff4444', secondary: '#457b9d' },
