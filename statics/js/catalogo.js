@@ -103,9 +103,17 @@
         naColecao(n) { return this.getColecao().includes(n); },
         addColecao(n) {
             const c = this.getColecao();
-            if (!c.includes(n)) { c.push(n); _set(LS.colecao, c); }
+            c.push(n);
+            _set(LS.colecao, c);
         },
-        removeColecao(n) { _set(LS.colecao, this.getColecao().filter(x => x !== n)); },
+        removeColecao(n) {
+            const c = this.getColecao();
+            const idx = c.indexOf(n);
+            if (idx > -1) {
+                c.splice(idx, 1);
+                _set(LS.colecao, c);
+            }
+        },
 
         // ── Equipe (máx. 6) ─────────────────────────────────────
         getEquipe() { return _get(LS.equipe, []); },

@@ -8,6 +8,18 @@ Catalogo.carregar().then(lista => {
 
     const descobertos = lista.filter(p => Catalogo.estaDescoberto(p.numero));
     document.getElementById('stat-descobertos').textContent = descobertos.length;
+    
+    const pct = lista.length ? Math.round((descobertos.length / lista.length) * 100) : 0;
+    const progressFill = document.getElementById('progress-fill');
+    const progressPercent = document.getElementById('progress-percent');
+    if (progressFill && progressPercent) {
+        // setTimeout para dar tempo do CSS carregar e a animação ocorrer
+        setTimeout(() => {
+            progressFill.style.width = pct + '%';
+            progressPercent.textContent = pct + '%';
+        }, 100);
+    }
+
     renderDistribuicao(descobertos);
 
     const box = document.getElementById('destaque-conteudo');
@@ -52,16 +64,30 @@ function renderDistribuicao(desc) {
     const rarOrdem = ['inicial', 'comum', 'mitico', 'lendario'];
     const rarChips = rarOrdem.filter(r => rar[r]).map(r => {
         const info = raridadeInfo(r);
-        return `<span class="distrib-chip" style="border-color:${info.cor}"><b style="color:${info.cor}">${rar[r]}</b> ${info.nome}</span>`;
+        return `<div class="distrib-item" style="border-left-color:${info.cor}">
+            <span>${info.nome}</span>
+            <b style="color:${info.cor}">${rar[r]}</b>
+        </div>`;
     }).join('');
 
     const elChips = Object.entries(els).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([k, c]) => {
         const e = window.ELEMENTOS[k] || {};
-        return `<span class="distrib-chip"><span class="distrib-orb" style="--c1:${e.cor};--c2:${e.cor2}"></span>${elNome(k)} <b>${c}</b></span>`;
+        return `<div class="distrib-item">
+            <span class="distrib-label"><span class="distrib-orb" style="--c1:${e.cor};--c2:${e.cor2}"></span>${elNome(k)}</span>
+            <b>${c}</b>
+        </div>`;
     }).join('');
 
     el.innerHTML = `
-        <h2 class="inicio-distrib-tit">Seus descobertos em números</h2>
-        <div class="distrib-grupo"><h3>Por raridade</h3><div class="distrib-chips">${rarChips}</div></div>
-        <div class="distrib-grupo"><h3>Por elemento</h3><div class="distrib-chips">${elChips}</div></div>`;
+        <h2 class="inicio-section-tit">Seus Descobertos em Detalhes</h2>
+        <div class="distrib-container">
+            <div class="distrib-box">
+                <h3>Por Raridade</h3>
+                <div class="distrib-list">${rarChips}</div>
+            </div>
+            <div class="distrib-box">
+                <h3>Por Elemento</h3>
+                <div class="distrib-list">${elChips}</div>
+            </div>
+        </div>`;
 }

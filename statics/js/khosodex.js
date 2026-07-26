@@ -124,7 +124,6 @@ function cardRevelado(p) {
     ).join('');
 
     const rar = raridadeInfo(p.raridade);
-    const naCol = Catalogo.naColecao(p.numero);
 
     card.innerHTML = `
         <div class="img-container"><img src="${imagemDe(p)}" alt="${p.nome}"></div>
@@ -133,8 +132,8 @@ function cardRevelado(p) {
             <h3 class="name">${Catalogo.apelidoOuNome(p)}</h3>
             <div class="badges">${badges}</div>
             <span class="raridade" style="color:${rar.cor}">${rar.estrelas} ${rar.nome}</span>
-            <button class="btn-colecao${naCol ? ' ativo' : ''}" data-num="${p.numero}">
-                ${naCol ? 'Na coleção' : '+ Coleção'}
+            <button class="btn-colecao" data-num="${p.numero}">
+                + Coleção
             </button>
         </div>`;
     return card;
@@ -183,15 +182,15 @@ function atualizarContador() {
 grid.addEventListener('click', e => {
     const btn = e.target.closest('.btn-colecao');
     if (!btn) return;
+    
+    // Impede que o clique no botão acione o card e redirecione
+    e.stopPropagation();
+    
     const num = Number(btn.dataset.num);
-    if (Catalogo.naColecao(num)) {
-        Catalogo.removeColecao(num);
-        notificar('Removido da coleção.');
-    } else {
-        Catalogo.addColecao(num);
-        notificar('Adicionado à coleção.', 'ok');
-    }
-    render();
+    const p = CATALOGO.find(x => x.numero === num);
+    
+    Catalogo.addColecao(num);
+    notificar(`${p ? p.nome : 'Khosō'} adicionado à coleção!`, 'ok');
 });
 
 btnImport.addEventListener('click', () => inputFile.click());

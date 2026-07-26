@@ -8,3 +8,7 @@ node_modules/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Tirando os arquivos do Mestre
+COMO_ADICIONAR_KHOSO.md
+liberados.json

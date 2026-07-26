@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
 /* ====================================================================
    TEMA GLOBAL — Supremacia do Protesto (mesma identidade da Ficha)
    ==================================================================== */
 :root {
   --font-heading: "Cinzel", "Segoe UI", serif;
-  --font-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-body: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
   --bg-main: #09090b;     /* preto neutro profundo */
   --bg-card: #18181b;     /* cinza zinco escuro */
@@ -41,6 +41,38 @@ body {
   background-size: 22px 22px;
   background-attachment: fixed;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Fundo mágico animado usando variáveis de tema */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  opacity: 0.15;
+  pointer-events: none;
+  animation: floatBackground 20s infinite ease-in-out alternate;
+}
+body::before {
+  top: -10vw;
+  left: -20vw;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+}
+body::after {
+  bottom: -10vw;
+  right: -20vw;
+  background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+  animation-delay: -10s;
+}
+
+@keyframes floatBackground {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(5vw, 5vh) scale(1.1); }
 }
 
 ::selection { background: var(--primary); color: #fff; }
@@ -139,17 +171,33 @@ h2 {
   left: 22px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: var(--primary);
+  gap: 10px;
   text-decoration: none;
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 2px;
   transition: filter var(--transition);
 }
-.topbar-logo svg { width: 24px; height: 24px; filter: drop-shadow(0 0 6px var(--primary-glow)); }
-.topbar-logo:hover { filter: brightness(1.25); }
+.logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1.5px solid var(--primary);
+  background: rgba(24, 24, 27, 0.6);
+  color: var(--text-main);
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 0 12px var(--primary-glow);
+  transition: all var(--transition);
+}
+.logo-text {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 2px;
+  color: var(--text-main);
+}
+.topbar-logo:hover .logo-box { filter: brightness(1.2); box-shadow: 0 0 18px var(--primary-glow); border-color: #ff6b6b; }
 
 .topbar-acoes {
   position: absolute;
@@ -312,8 +360,8 @@ select option { background: var(--bg-input); color: var(--text-main); }
   .topbar-links { gap: 14px; }
   .topbar-link { font-size: 0.66rem; letter-spacing: 1px; }
   .topbar-acoes { position: static; }
-  .topbar-logo { left: 12px; }
-  .topbar-logo span { display: none; }
+  .topbar-logo { left: 12px; gap: 8px; }
+  .logo-text { display: none; }
   main { padding-top: 56px; }
 }
 

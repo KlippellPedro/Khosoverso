@@ -58,11 +58,11 @@
             if (!it) return '';
             return `<span class="eq-item">${it.nome} <b>+${it.efeito.valor} ${labels[it.efeito.stat] || it.efeito.stat}</b><button class="eq-rm" data-id="${id}" title="Remover">&times;</button></span>`;
         }).join('') || '<span class="def-vazio">Nenhum item equipado.</span>';
-        const add = disp.length ? `<div class="equipar-add">
+        const add = disp.length ? `<div class="equipar-add" style="margin-top:10px;">
             <select id="eq-select" class="filtro-select">${disp.map(i => `<option value="${i.id}">${i.nome} (+${i.efeito.valor} ${labels[i.efeito.stat] || i.efeito.stat})</option>`).join('')}</select>
             <button id="eq-btn" class="btn-sec">Equipar</button>
         </div>` : '';
-        return `<div class="equipar-box"><h3>Itens de reforço</h3><div class="equipados-lista">${equipados}</div>${add}</div>`;
+        return `<div class="equipados-lista">${equipados}</div>${add}`;
     }
 
     function defesaHtml() {
@@ -87,7 +87,7 @@
             return `<span class="def-chip"><span class="def-orb" style="--c1:${el.cor || '#888'};--c2:${el.cor2 || '#aaa'}"></span>${elNome(x.at)}<b>${fmt(x.m)}</b></span>`;
         };
         const grupo = (t, arr) => arr.length ? `<div class="def-grupo"><h4>${t}</h4><div class="def-chips">${arr.map(chip).join('')}</div></div>` : '';
-        return `<div class="defesa-elemental"><h3>Defesa elemental</h3>${grupo('Fraco contra', fraco)}${grupo('Resiste a', resiste)}${grupo('Imune a', imune)}${(!fraco.length && !resiste.length && !imune.length) ? '<p class="def-vazio">Sem interações elementais notáveis.</p>' : ''}</div>`;
+        return `<div class="defesa-elemental-inner">${grupo('Fraco contra', fraco)}${grupo('Resiste a', resiste)}${grupo('Imune a', imune)}${(!fraco.length && !resiste.length && !imune.length) ? '<p class="def-vazio">Sem interações elementais notáveis.</p>' : ''}</div>`;
     }
 
     function evolucaoHtml() {
@@ -107,7 +107,7 @@
         chain += node(p, true);
         if (paras.length === 1) chain += seta(paras[0].cond) + node(paras[0].mon, false);
         else if (paras.length > 1) chain += `<div class="evo-ramos">${paras.map(x => `<div class="evo-ramo">${seta(x.cond)}${node(x.mon, false)}</div>`).join('')}</div>`;
-        return `<div class="bloco-detalhe"><h3>Evolução</h3><div class="evo-chain">${chain}</div></div>`;
+        return `<div class="evo-chain">${chain}</div>`;
     }
 
     function ataquesHtml() {
@@ -124,8 +124,7 @@
                 ${m.descricao ? `<p class="atk-desc">${m.descricao}</p>` : ''}
             </div>`;
         }).join('') : '<p class="def-vazio">Nenhum ataque ainda. Crie os ataques do seu Khosō no formulário abaixo.</p>';
-        return `<div class="bloco-detalhe">
-            <h3>Ataques</h3>
+        return `
             <div class="atk-grid">${cards}</div>
             <div class="atk-form">
                 <input id="atk-nome" class="atk-in" type="text" maxlength="28" placeholder="Nome do ataque (ex: Mordida de Lava)">
@@ -136,18 +135,17 @@
                 <input id="atk-desc" class="atk-in" type="text" maxlength="80" placeholder="O que o ataque faz (opcional)">
                 <button id="atk-add" class="btn">+ Criar ataque</button>
             </div>
-        </div>`;
+        `;
     }
 
     function pessoalHtml() {
         const k = Catalogo.getKhoso(num);
         const ap = (k.apelido || '').replace(/"/g, '&quot;');
         const nt = (k.nota || '').replace(/</g, '&lt;');
-        return `<div class="bloco-detalhe pessoal-box">
-            <h3>Apelido e anotações</h3>
+        return `
             <input id="ap-input" class="ap-input" type="text" maxlength="24" placeholder="Dê um apelido (opcional)" value="${ap}">
             <textarea id="ap-nota" class="ap-nota" placeholder="Suas anotações sobre este Khosō...">${nt}</textarea>
-        </div>`;
+        `;
     }
 
     function render() {
@@ -158,25 +156,55 @@
             <a href="${next ? 'detalhes.html?n=' + next.numero : '#'}" class="btn-nav ${!next ? 'disabled' : ''}">${next ? next.nome + ' →' : '—'}</a>
         </div>`;
         const borderStyle = cores.length > 1
-            ? `border:3px solid transparent;background-image:linear-gradient(#1a1a1a,#1a1a1a),linear-gradient(135deg,${cores[0]},${cores[1]},${cores[0]},${cores[1]});background-origin:border-box;background-clip:padding-box,border-box;background-size:400% 400%;animation:borderRotate 6s ease infinite;box-shadow:0 0 30px ${cores[0]}66;`
-            : `border-color:${cores[0]};border-radius:15px;box-shadow:0 0 20px ${cores[0]}33;`;
+            ? `border:3px solid transparent;background-image:linear-gradient(rgba(24,24,27,0.7),rgba(24,24,27,0.7)),linear-gradient(135deg,${cores[0]},${cores[1]},${cores[0]},${cores[1]});background-origin:border-box;background-clip:padding-box,border-box;background-size:400% 400%;animation:borderRotate 6s ease infinite;box-shadow:0 10px 40px rgba(0,0,0,0.6), 0 0 30px ${cores[0]}44;`
+            : `border-color:${cores[0]};box-shadow:0 10px 40px rgba(0,0,0,0.6), 0 0 20px ${cores[0]}33;`;
 
         view.innerHTML = `${navHtml}
             <div class="detalhes-container" style="${borderStyle}">
-                <div class="detalhes-img"><img src="${Catalogo.imagem(p)}" alt="${p.nome}"></div>
-                <div class="detalhes-info">
-                    <span class="number">N.º ${String(p.numero).padStart(3, '0')}</span>
-                    <h1 style="font-size:2.5rem;margin-bottom:10px;">${p.nome}</h1>
-                    <div class="badges" style="margin-bottom:15px;">${badges}</div>
-                    <p class="raridade" style="color:${rar.cor};margin-bottom:20px;">${rar.estrelas} ${rar.nome}</p>
-                    <p class="descricao" style="font-style:italic;color:#ccc;line-height:1.6;margin-bottom:26px;">"${p.descricao}"</p>
-                    <div class="stats-container"><h3>Estatísticas Base</h3>${statsHtml()}</div>
-                    ${equiparHtml()}
-                    ${evolucaoHtml()}
-                    ${ataquesHtml()}
-                    ${defesaHtml()}
-                    ${pessoalHtml()}
+                
+                <div class="detalhes-sidebar">
+                    <div class="detalhes-img"><img src="${Catalogo.imagem(p)}" alt="${p.nome}"></div>
+                    <div class="detalhes-header">
+                        <span class="number">N.º ${String(p.numero).padStart(3, '0')}</span>
+                        <h1>${p.nome}</h1>
+                        <div class="badges">${badges}</div>
+                        <p class="raridade" style="color:${rar.cor};">${rar.estrelas} ${rar.nome}</p>
+                    </div>
+                    <div class="detalhes-lore">
+                        <p class="descricao">"${p.descricao}"</p>
+                    </div>
+                    <div class="widget-pessoal">
+                        <h3 class="widget-title">Arquivo Pessoal</h3>
+                        ${pessoalHtml()}
+                    </div>
                 </div>
+
+                <div class="detalhes-widgets">
+                    
+                    <div class="widget stats-widget">
+                        <h3 class="widget-title">Atributos Base</h3>
+                        ${statsHtml()}
+                    </div>
+                    
+                    <div class="widget def-widget">
+                        <h3 class="widget-title">Defesa Elemental</h3>
+                        ${defesaHtml()}
+                    </div>
+                    
+                    <div class="widget eq-widget">
+                        <h3 class="widget-title">Equipamento</h3>
+                        ${equiparHtml()}
+                    </div>
+                    
+                    ${evolucaoHtml() ? `<div class="widget evo-widget"><h3 class="widget-title">Linha Evolutiva</h3>${evolucaoHtml()}</div>` : ''}
+                    
+                    <div class="widget atk-widget">
+                        <h3 class="widget-title">Conjunto de Ataques</h3>
+                        ${ataquesHtml()}
+                    </div>
+                    
+                </div>
+                
             </div>`;
 
         if (p.raridade === 'lendario') {

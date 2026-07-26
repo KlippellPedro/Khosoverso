@@ -33,11 +33,8 @@
     const html = `
         <header class="topbar">
             <a class="topbar-logo" href="${homePrefix}index.html" aria-label="Início" title="Supremacia do Protesto">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 2 L21 7 V17 L12 22 L3 17 V7 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                    <path d="M12 6 V18 M7.5 9 L16.5 15 M16.5 9 L7.5 15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-                </svg>
-                <span>SDP</span>
+                <span class="logo-box">S</span>
+                <span class="logo-text">SUPREMACIA</span>
             </a>
             <nav class="topbar-links">${linksHtml}</nav>
             <div class="topbar-acoes">
