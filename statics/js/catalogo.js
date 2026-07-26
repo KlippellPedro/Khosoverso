@@ -48,7 +48,7 @@
     let _catalogoPromise = null;
     function carregar() {
         if (!_catalogoPromise) {
-            _catalogoPromise = fetch(BASE + 'data/khosodex.json')
+            _catalogoPromise = fetch(BASE + 'data/khosodex.json?v=' + new Date().getTime())
                 .then(r => r.json())
                 .then(d => d.khosos || [])
                 .catch(e => { console.error('Erro ao carregar data/khosodex.json:', e); return []; });
